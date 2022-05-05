@@ -1,0 +1,96 @@
+Program Confiabilidade_De_Um_PCs;
+
+// Variáveis pré-declaradas
+   // Saida   : TwsOutPut
+   // Projeto : TprProjeto_Rosen
+
+var
+  Alpha    : Real;
+  TFmedio  : Real;
+  Resil    : Real;
+  VulTot   : Real;
+  VulRelat : Real;
+
+  IntTotal : Integer;
+  i        : Integer;
+  Zt       : Integer;
+  Wt       : Integer;
+
+  DemRef   : Object;
+  DemAtend : Object;
+  PC       : Object;
+
+  Aux      : Real;
+  Soma     : Real;
+
+  Pri_Demanda : Integer;
+  Cat_Demanda : String;
+
+Begin
+  // Parâmetros iniciais
+  Pri_Demanda := 3;
+  Cat_Demanda := 'T';
+  PC := Projeto.PCPeloNome('PC_11');
+
+  // Intervalo total
+  IntTotal := Projeto.Total_IntSim;
+
+  // Preparação dos vetores
+  DemRef := wsDFVecCreate(IntTotal);
+  DemAtend := wsDFVecCreate(IntTotal);
+
+  // Incialização dos vetores de Demandas
+  for i := 1 to IntTotal do
+    Begin
+    Aux := PC.ObtemValorDemanda(i, Pri_Demanda, Cat_Demanda);
+    DemRef.Set(i,Aux);
+    DemAtend.Set(i,Aux);
+    end;
+
+  // Índice de Confiabilidade
+  Soma := 0;
+  for i:= 1 to IntTotal do
+    Begin
+    if DemAtend.Get(i) < DemRef.Get(i) then Zt :=0 else Zt:= 1; 
+    Soma := Soma + Zt;
+    end;
+  Alpha := Soma/IntTotal;
+
+  //Índice de Resiliência
+  Soma := 0;
+  for i:= 1 to IntTotal-1 do
+    Begin
+    if Not(DemAtend.Get(i) < DemRef.Get(i)) and
+       (DemAtend.Get(i+1) < DemRef.Get(i+1)) then Wt :=1 else Wt:= 0;
+    Soma := Soma + Wt;
+    end;
+  Aux := Soma/(IntTotal-1);
+  TFmedio := (1-Alpha);
+  if TFmedio = 0 then Resil := 0 else Resil := 1/TFmedio;
+
+  //Índice de Vulnerabilidade
+  Soma    := 0;
+  VulTot  := 0;
+  for i:= 1 to IntTotal do
+      if DemAtend.Get(i) < DemRef.Get(i) then
+         Begin
+         VulTot := VulTot + DemRef.Get(i) - DemAtend.Get(i);
+         Soma  := Soma + DemRef.Get(i);
+         end;
+  if Soma = 0 then VulRelat := 0 else VulRelat := VulTot/Soma;
+
+  // Libera os objetos criados
+  FreeObject(DemRef);
+  FreeObject(DemAtend);
+
+  // Apresentação dos resultados
+  Saida.Write('Resultado dos Índices Probabilísticos');
+  Saida.Write('Projeto ... ' + Projeto.Nome);
+  Saida.Write('PC ........ ' + PC.Nome);
+  Saida.Write('');
+  Saida.Write('Índice de Confiabilidade ............. ' + ValToStr(Alpha));
+  Saida.Write('Índice de Resiliência ................ ' + ValToStr(Resil));
+  Saida.Write('Índice de Vulnerabilidade Relativa ... ' + ValToStr(VulRelat));
+  Saida.Write('Índice de Vulnerabilidade Total ...... ' + ValToStr(VulTot));
+  Saida.Show;
+end.

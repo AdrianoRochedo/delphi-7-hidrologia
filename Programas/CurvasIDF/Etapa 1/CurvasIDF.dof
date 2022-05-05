@@ -1,0 +1,110 @@
+[FileVersion]
+Version=6.0
+[Compiler]
+A=8
+B=0
+C=1
+D=1
+E=0
+F=0
+G=1
+H=1
+I=1
+J=0
+K=0
+L=1
+M=0
+N=1
+O=1
+P=1
+Q=0
+R=0
+S=0
+T=0
+U=0
+V=1
+W=0
+X=1
+Y=1
+Z=1
+ShowHints=1
+ShowWarnings=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[Linker]
+MapFile=0
+OutputObjs=0
+ConsoleApp=1
+DebugInfo=0
+RemoteSymbols=0
+MinStackSize=16384
+MaxStackSize=1048576
+ImageBase=4194304
+ExeDescription=
+[Directories]
+OutputDir=f:\Projetos\Hidrologia\Programas\Redes\IPHS1\Bin
+UnitOutputDir=
+PackageDLLOutputDir=
+PackageDCPOutputDir=
+SearchPath=f:\projetos\comum\graficos;f:\projetos\comum\PascalScript\Lib;f:\projetos\comum\PascalScript;f:\projetos\comum\WinStat 2;f:\projetos\comum\XML
+Packages=vcl
+Conditionals=
+DebugSourceDirs=
+UsePackages=0
+[Parameters]
+RunParams=
+HostApplication=
+Launcher=
+UseLauncher=0
+DebugCWD=
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=2
+Build=2
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1046
+CodePage=1252
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.2.2
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+[Excluded Packages]
+d:\programacao\delphi 6\Bin\dcldss60.bpl=Borland Decision Cube Components
+[HistoryLists\hlConditionals]
+Count=1
+Item0=NomesCurtos; Orpheus; D5; D3; IPHS1; FINAL;Planilha;Planilha
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlSearchPath]
+Count=8
+Item0=e:\projetos\comum\graficos;e:\projetos\comum\PascalScript\Lib;e:\projetos\comum\PascalScript;e:\projetos\comum\WinStat 2;e:\projetos\comum\XML
+Item1=e:\Projetos\Comum\TCH 4;e:\Projetos\Comum\PascalScript;e:\Projetos\Comum\PascalScript\Lib;e:\Projetos\Comum\WinStat 2;e:\Projetos\Comum\XML
+Item2=f:\Projetos\Comum\XML;f:\Projetos\Comum\WinStat 2;f:\Projetos\Comum\TCH 4;f:\Projetos\Comum\PascalScript;f:\Projetos\Comum\PascalScript\Lib
+Item3=f:\projetos\comum\graficos;f:\projetos\comum\PascalScript\Lib;f:\projetos\comum\PascalScript;f:\projetos\comum\WinStat 2;f:\projetos\comum\XML
+Item4=f:\projetos\comum\PascalScript\Lib;f:\projetos\comum\PascalScript;f:\projetos\comum\WinStat 2;f:\projetos\comum\XML
+Item5=f:\projetos\comum\PascalScript;f:\projetos\comum\WinStat 2;f:\projetos\comum\XML
+Item6=f:\projetos\comum\PascalScript;f:\projetos\comum\WinStat 2
+Item7=f:\projetos\comum\PascalScript
+[HistoryLists\hlOutputDirectorry]
+Count=3
+Item0=F:\Projetos\Hidrologia\Programas\Redes\IPHS1\Bin
+Item1=E:\Projetos\Hidrologia\Programas\Redes\IPHS1\Bin
+Item2=..\

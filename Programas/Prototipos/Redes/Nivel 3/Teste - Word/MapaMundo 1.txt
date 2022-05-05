@@ -1,0 +1,111 @@
+[Projeto]
+Nome=Proj_1
+
+[Dados Proj_1]
+Nome=Proj_1
+Classe=Txx_Projeto
+Bloqueado=0
+Comentarios=
+Separador Decimal=.
+Fundo=
+Dir. Saida=
+Dir. Trabalho=
+Leyers=3
+
+[Dados Proj_1 - Layer 1]
+Type=0
+Name=rivers.shp
+Visible=1
+Symbol.Color=16711680
+Symbol.Size=1
+Symbol.Style=0
+UseScaleForVisibility=0
+MinScale=0
+MaxScale=0
+
+[Dados Proj_1 - Layer 2]
+Type=0
+Name=lakes.shp
+Visible=0
+Symbol.Color=48966825
+Symbol.Size=0
+Symbol.Style=0
+UseScaleForVisibility=1
+MinScale=50000
+MaxScale=0
+
+[Dados Proj_1 - Layer 3]
+Type=0
+Name=country.shp
+Visible=1
+Symbol.Color=12632256
+Symbol.Size=0
+Symbol.Style=0
+UseScaleForVisibility=0
+MinScale=0
+MaxScale=0
+
+[PCs]
+Quantidade=3
+PC1=Objeto_1
+PC2=Objeto_2
+PC3=Objeto_3
+
+[Dados Objeto_1]
+Nome=Objeto_1
+Classe=Txx_PC
+Bloqueado=0
+Comentarios=
+x=-149.417475728155
+y=26.9436504771409
+TD=TrechoDagua_1
+SubBacias=0
+Derivacoes=0
+
+[Dados TrechoDagua_1]
+Nome=TrechoDagua_1
+Classe=Txx_TrechoDagua
+Bloqueado=0
+Comentarios=
+PM=Objeto_1
+PJ=Objeto_2
+
+[Dados Objeto_2]
+Nome=Objeto_2
+Classe=Txx_PC
+Bloqueado=0
+Comentarios=
+x=-56.7961165048544
+y=-17.6194563189756
+TD=TrechoDagua_2
+SubBacias=0
+Derivacoes=0
+
+[Dados TrechoDagua_2]
+Nome=TrechoDagua_2
+Classe=Txx_TrechoDagua
+Bloqueado=0
+Comentarios=
+PM=Objeto_2
+PJ=Objeto_3
+
+[Dados Objeto_3]
+Nome=Objeto_3
+Classe=Txx_PC
+Bloqueado=0
+Comentarios=
+x=53.3009708737864
+y=-29.8524660277135
+SubBacias=0
+Derivacoes=0
+
+[Area de Projeto]
+Bloqueado=0
+x=0
+y=0
+Largura=420
+Altura=265
+Mostrar Fundo=1
+Mostrar Trechos=1
+Estado Janela=0
+

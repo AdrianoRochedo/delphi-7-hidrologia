@@ -1,0 +1,102 @@
+IrrGrossDepthProd
+RawIrrGrossDepthProd
+HoursOfOperation
+WaterCost
+LaborCost
+FixedIrrCost
+VariableIrrCost
+IrrCost
+IrrCropCost
+CapRetFactor
+TotalRawGrossRevenue
+PracticableProductivity
+
+Os parametros sao separados por "."
+
+Dados sobre a Lavoura:
+  1 Parametro
+
+    'Area'
+    'Managements'
+    'MinSysEff'
+    'MaxSysEff'
+    'MinInstCost'
+    'MaxInstCost'
+    'MinMainCost'
+    'MaxMainCost'
+    'FirstYear'
+    'LastYear'
+    'Protein'
+    'Fat'
+    'Calories'
+    'Calcium'
+    'OperationHoursPerDay'
+    'Prob_Level'
+    'IrrigatedArea_perDay'
+    'IrrigationFrequency'
+    'BaseYield'
+    'CultivatedArea'
+    'NetIncome'
+    'FixedCost'
+    'VariableCost'
+    'Cost'
+    'TotalCost'
+    'Sys_FlowRate'
+    'Sys_PressureHead'
+    'Sys_Efficiency'
+    'Sys_PumpEffic'
+    'Sys_Life'
+    'Sys_IrrInstCost'
+    'Sys_IrrMainCost'
+    'Sys_IrrResVal'
+    'Sys_AnualIR'
+    'WaterPrice'
+    'EnergyPrice'
+    'Labor_Persons'
+    'Labor_CostHourly'
+
+Dados sobre os Manejos:
+  2 Parametros. Ex: 'Man_1.BombOutlet'
+
+    'BombOutlet'
+    'MinBombOutlet'
+
+Dados sobre os Anos:
+  3 Parametros. Ex: 'Man_1.1990.VPM'
+
+    'Irrigate'
+    'ETa'
+    'ETm'
+    'RACC'
+    'YieldLoss'
+    'CropYield'
+    'MPV'
+    'FPV'
+    'CLPY'
+    'RPCC'
+    'RCPY'
+    'RWP'
+    'IRWP'
+    'IWP'
+    'IWP_ID'
+    'NWP'
+    'IWNP'
+    'IRWNP'
+    'EWP'
+    'Prec'
+    'RC'
+    'PeakIntervals'
+    'IrrDepth'
+    'RawIrrDepth'
+    'TotalWaterVol'
+    'TotalProduction'
+    'LiquidNetProfit'
+    'NetProfit'
+    'Profit'
+    'LimProdForRevenue'
+    'RawGrossMarginOfProfit'
+    'IGDNP'
+    'TotalIrrCost'
+    'TotalIrrCropCost'
+    'EnergyCost'
+    'MarginalProductivity'

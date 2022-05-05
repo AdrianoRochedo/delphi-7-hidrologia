@@ -1,0 +1,42 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Propagar_3.exe TestesGraficos.exe PanZoomDemo.exe MPSGenerator.exe \
+  Solver.exe cd_Lavouras.dll NewPluginHost.exe LP_Solver_Res_Reader_Test.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Propagar_3.exe: Fontes\Propagar_3.dpr
+  $(DCC)
+
+TestesGraficos.exe: testes\Graficos\TestesGraficos.dpr
+  $(DCC)
+
+PanZoomDemo.exe: testes\PanZoom\PanZoomDemo.dpr
+  $(DCC)
+
+MPSGenerator.exe: testes\MPSGenerator\MPSGenerator.dpr
+  $(DCC)
+
+Solver.exe: Fontes\Solver\Solver.DPR
+  $(DCC)
+
+cd_Lavouras.dll: Fontes\Plugins\Cenarios de Demanda\Lavouras\cd_Lavouras.dpr
+  $(DCC)
+
+NewPluginHost.exe: ..\Flavio Vitoria\NewPluginHost\NewPluginHost.dpr
+  $(DCC)
+
+LP_Solver_Res_Reader_Test.exe: testes\LP-Solver Res Reader\LP_Solver_Res_Reader_Test.dpr
+  $(DCC)
+
+

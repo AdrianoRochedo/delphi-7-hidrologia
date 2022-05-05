@@ -1,0 +1,45 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = WinStat.exe PROCEDA.exe Chuvaz_to_Proceda.exe HidroWeb_2.dll \
+  Isareg.dll Isareg_out.dll Epagri.dll Excel_Simples.dll SequenciaDeValores.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+PROCEDA.exe: PROCEDA.dpr
+  $(DCC)
+
+HidroWeb_2.dll: Source\Plugins\Import\HidroWeb\HidroWeb_2.dpr
+  $(DCC)
+
+Isareg.dll: Source\Plugins\Import\Isareg\Isareg.dpr
+  $(DCC)
+
+Isareg_out.dll: Source\Plugins\Export\Isareg\Isareg_out.dpr
+  $(DCC)
+
+Chuvaz_to_Proceda.exe: Source\Programs\Chuvaz_to_Proceda\Chuvaz_to_Proceda.dpr
+  $(DCC)
+
+Epagri.dll: Source\Plugins\Import\Epagri\Epagri.dpr
+  $(DCC)
+
+Excel_Simples.dll: Source\Plugins\Import\Excel - Simples\Excel_Simples.dpr
+  $(DCC)
+
+WinStat.exe: ..\..\..\WinStat\WinStat PROG\WinStat.dpr
+  $(DCC)
+
+SequenciaDeValores.dll: Source\Plugins\Import\Sequencia de Valores\SequenciaDeValores.dpr
+  $(DCC)
+
+

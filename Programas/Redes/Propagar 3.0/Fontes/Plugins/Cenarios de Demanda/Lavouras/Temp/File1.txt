@@ -1,0 +1,119 @@
+TYear.getRevenue()
+      TYear.getIRRCropCost()
+            TCrop.getCC()
+                  TCrop.FixedCost {FFixedCost}
+                  TCrop.VariableCost {FVariableCost}
+            TYear.getIrrCost()
+                  TYear.getVIC()
+                        TYear.getEnergyCost()
+                              TCrop.Sys_FlowRate {Fs_FR}
+                              TYear.getHorasOper()
+                                    TYear.getRawIrrDepth()
+                                          TYear.IrrDepth {FIrrDepth}
+                                          TCrop.Sys_Efficiency {Fs_Effic}
+                                    TCrop.Sys_FlowRate {Fs_FR}
+                              Crop.Sys_PressureHead {Fs_PH}
+                              Crop.BaseYield {Fc_BY}
+                              Crop.Sys_PumpEffic {Fs_PE}
+                        TYear.getWaterCost()
+                              TYear.getRawIrrDepth() { ----> ja olhado}
+                              TCrop.WaterPrice {Fs_WP}
+                        TYear.getLaborCost()
+                              TYear.getHorasOper() { ----> ja olhado}
+                              TCrop.Labor_Persons {Fo_L_PN}
+                              TCrop.Labor_CostHourly {Fo_L_CH}
+                        TCrop.Sys_IrrManCost {Fs_MCost}
+                  TYear.getFIC()
+                        Crop.Sys_IrrInstCost {Fs_ICost}
+                        Crop.Sys_IrrResVal {Fs_RV}
+                        TYear.getCapRetFac()
+                              Crop.Sys_AnualIR {Fs_IR}
+                              Crop.Sys_Life {Fs_Life}
+      TYear.getLP()
+            TYear.getRawMarginOfProfit()
+                  TYear.YieldLoss {FYieldLoss}
+                  TYear.getMPV()
+                        Crop.ValorProdutoMercado(TYear.FYear)
+            TYear.getIrrCropCost() { ----> ja olhado}
+
+-------------------------------------------------------------------------------
+
+        CULTURA
+
+        Area       -   Area
+        Manejos    -   Managements
+        EI_Min     -   MinSysEff
+        EI_Max     -   MaxSysEff
+        CustoMinI  -   MinInstCost
+        CustoMaxI  -   MaxInstCost
+        CustoMinM  -   MinMainCost
+        CustoMaxM  -   MaxMainCost
+        AnoInicial -   FirstYear
+        AnoFinal   -   LastYear
+        Proteina   -   Protein
+        Gordura    -   Fat
+        Caloria    -   Calorie
+        Calcio     -   Calcium
+                       OperationHoursPerDay
+                       Prob_Level
+                       IrrigatedArea_perDay
+                       IrrigationFrequency
+                       BaseYield
+                       CultivatedArea
+                       NetIncome
+                       FixedCost
+                       VariableCost
+                       Cost
+                       TotalCost
+                       Sys_FlowRate
+                       Sys_PressureHead
+                       Sys_Efficiency
+                       Sys_PumpEffic
+                       Sys_Life
+                       Sys_IrrInstCost
+                       Sys_IrrMainCost
+                       Sys_IrrResVal
+                       Sys_AnualIR
+                       WaterPrice
+                       EnergyPrice
+                       Labor_Persons
+                       Labor_CostHourly
+
+        MANEJO
+
+        VB         -   BombOutlet
+                   -   MinBombOutlet    
+
+        ANOS
+
+        Irrigado   -   Irrigate
+        VPM        -   MPV
+        VPA        -   FPV
+        RPLC       -   CLPY
+        Rcul       -   CropYield
+        CCCP       -   RPCC
+        RPcul      -   RCPY
+        ETa        -   ETa
+        CCC        -   RACC
+        Q          -   YieldLoss
+        PR_CHU     -   RWP
+        ChT        -   Prec
+        CC         -   RC
+        II_P       -   PeakIntervals
+        ETm        -   ETm
+        LIC        -   IrrDepth
+        Demanda    -   Demand
+                       PeakIntervals
+                       IrrDepth
+                       RawIrrDepth
+                       TotalWaterVol
+                       TotalProduction
+                       LiquidProfit
+                       Revenue
+                       TotalRevenue
+                       LimProdForRevenue
+                       RawMarginOfProfit
+                       TotalIrrCost
+                       TotalIrrCropCost
+                       EnergyCost
+                       MarginalProductivity

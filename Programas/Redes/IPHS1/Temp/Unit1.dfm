@@ -1,0 +1,64 @@
+object Form1: TForm1
+  Left = 230
+  Top = 187
+  Width = 430
+  Height = 261
+  Caption = 'Form1'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object r: TTrackBar
+    Left = 149
+    Top = 16
+    Width = 245
+    Height = 34
+    Max = 255
+    Orientation = trHorizontal
+    Frequency = 1
+    Position = 0
+    SelEnd = 0
+    SelStart = 0
+    TabOrder = 0
+    TickMarks = tmBottomRight
+    TickStyle = tsNone
+    OnChange = rChange
+  end
+  object g: TTrackBar
+    Left = 150
+    Top = 45
+    Width = 245
+    Height = 34
+    Max = 255
+    Orientation = trHorizontal
+    Frequency = 1
+    Position = 0
+    SelEnd = 0
+    SelStart = 0
+    TabOrder = 1
+    TickMarks = tmBottomRight
+    TickStyle = tsNone
+    OnChange = rChange
+  end
+  object b: TTrackBar
+    Left = 151
+    Top = 75
+    Width = 245
+    Height = 34
+    Max = 255
+    Orientation = trHorizontal
+    Frequency = 1
+    Position = 0
+    SelEnd = 0
+    SelStart = 0
+    TabOrder = 2
+    TickMarks = tmBottomRight
+    TickStyle = tsNone
+    OnChange = rChange
+  end
+end

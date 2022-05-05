@@ -1,0 +1,39 @@
+Prezados Senhores:
+Meu nome é Ivanilto Andreolli, sou aluno do mestrado da UFRGS/IPH.
+Conforme conversado com o Professor Viegas estou enviando em anexo as
+simulações que mostraram problemas no programa. Cada pasta enzipada
+representa uma simulação.
+
+Desde já agradeço pela vossa atenção.
+
+Ivanilto Andreolli
+
+
+Meu nome é Ivanilto Andreolli, sou aluno de mestrado do IPH-UFRGS e estou fazendo um trabalho
+com o IPH S1 e anotei alguns problemas. Conversando com o Professor Viegas, ele me pediu
+que enviasse isso por email.
+
+Desde já quero agradecer pela atenção dos senhores e me desculpar por qualquer incoveniente.
+
+Observação:
+
+1)Em cada pasta existe um arquivo explicando os erros encontrados no programa
+2) Cada psta representa uma simulação diferente, onde estão os aqruivos usados e a bacia
+assim pode-se rodar novamente o programa e ver o problema.
+3) Existe uma sequência (A, B, C, D) para averiguar os problemas, que fica melhor
+de entender.
+4) Os problemas se referem a modelagem pelo método SCS e pelo hidrograma unitário sintético,
+além disso quando propagado em rio, utilizou-se o método de Muskigan Cunge na versão linear,
+pois a não linear não está funcionando.
+
+
+Ivanilto Andreolli
+
+Attachment Converted: "e:\internet\eudora\attach\B_Bacia_Completa.zip"
+
+Attachment Converted: "e:\internet\eudora\attach\C_Bacia_Pelotas_370_Dt.zip"
+
+Attachment Converted: "e:\internet\eudora\attach\D_Bacia_Completa_2.zip"
+
+Attachment Converted: "e:\internet\eudora\attach\A_Bacia_Pelotas.zip"
+

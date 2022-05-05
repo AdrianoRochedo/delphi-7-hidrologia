@@ -1,0 +1,705 @@
+Document Type: WSE
+item: Global
+  Version=7.04
+  Title=Importador do Chuvaz
+  Flags=00010100
+  Split=512
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=10
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000110010110000001000
+  Log Pathname=%MAINDIR%\INSTALL.LOG
+  Message Font=MS Sans Serif
+  Font Size=8
+  Pages Modified=00110000000100000000001100000001
+  Extra Pages=00000000000000000000000000100000
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  FTP Cluster Size=20
+  Version File=1.00
+  Version Description=Importador do Chuvaz
+  Version Copyright=Adriano Rochedo Conceição
+  Variable Name1=_SYS_
+  Variable Default1=C:\WINDOWS\SYSTEM
+  Variable Flags1=00001000
+  Variable Name2=_WISE_
+  Variable Default2=E:\UTILITARIOS\WISE
+  Variable Flags2=00001000
+end
+item: Set Variable
+  Variable=APPTITLE
+  Value=Importador
+  Flags=10000000
+end
+item: Set Variable
+  Variable=GROUP
+  Value=Chuvaz
+  Flags=10000000
+end
+item: Set Variable
+  Variable=DISABLED
+  Value=!
+end
+item: Set Variable
+  Variable=MAINDIR
+  Flags=10000000
+end
+item: Check Configuration
+  Flags=10111011
+end
+item: Get Registry Key Value
+  Variable=COMMON
+  Key=SOFTWARE\Microsoft\Windows\CurrentVersion
+  Default=C:\Program Files\Common Files
+  Value Name=CommonFilesDir
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=PROGRAM_FILES
+  Key=SOFTWARE\Microsoft\Windows\CurrentVersion
+  Default=C:\Program Files
+  Value Name=ProgramFilesDir
+  Flags=00000100
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=%PROGRAM_FILES%\%MAINDIR%
+  Flags=00001100
+end
+item: Set Variable
+  Variable=EXPLORER
+  Value=1
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=C:\%MAINDIR%
+  Flags=00001100
+end
+item: End Block
+end
+item: Set Variable
+  Variable=BACKUP
+  Value=%MAINDIR%\BACKUP
+  Flags=10000000
+end
+item: Set Variable
+  Variable=DOBACKUP
+  Value=B
+  Flags=10000000
+end
+item: Set Variable
+  Variable=COMPONENTS
+  Flags=10000000
+end
+item: Set Variable
+  Variable=BRANDING
+  Value=0
+end
+item: If/While Statement
+  Variable=BRANDING
+  Value=1
+end
+item: Read INI Value
+  Variable=NAME
+  Pathname=%INST%\CUSTDATA.INI
+  Section=Registration
+  Item=Name
+end
+item: Read INI Value
+  Variable=COMPANY
+  Pathname=%INST%\CUSTDATA.INI
+  Section=Registration
+  Item=Company
+end
+item: If/While Statement
+  Variable=NAME
+end
+item: Set Variable
+  Variable=DOBRAND
+  Value=1
+end
+item: End Block
+end
+item: End Block
+end
+item: Wizard Block
+  Direction Variable=DIRECTION
+  Display Variable=DISPLAY
+  Bitmap Pathname=%_WISE_%\DIALOGS\TEMPLATE\WIZARD.BMP
+  X Position=9
+  Y Position=10
+  Filler Color=8421440
+  Dialog=Select Program Manager Group
+  Dialog=Select Backup Directory
+  Dialog=Display Registration Information
+  Dialog=Get Registration Information
+  Variable=EXPLORER
+  Variable=DOBACKUP
+  Variable=DOBRAND
+  Variable=DOBRAND
+  Value=1
+  Value=A
+  Value=1
+  Value=1
+  Compare=0
+  Compare=1
+  Compare=0
+  Compare=1
+  Flags=00000011
+end
+item: Custom Dialog Set
+  Name=Welcome
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=Instalação do %APPTITLE%
+    Title French=Installation de %APPTITLE%
+    Title German=Installation von %APPTITLE%
+    Title Spanish=Instalación de %APPTITLE%
+    Title Italian=Installazione di %APPTITLE%
+    Width=271
+    Height=224
+    Font Name=Helv
+    Font Size=8
+    item: Static
+      Rectangle=86 7 258 41
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Bem vindo !
+      Text French=Bienvenue !
+      Text German=Willkommen!
+      Text Spanish=¡Bienvenido!
+      Text Italian=Benvenuti!
+    end
+    item: Push Button
+      Rectangle=150 187 195 202
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=&Próximo >
+      Text French=&Suite >
+      Text German=&Weiter >
+      Text Spanish=&Siguiente >
+      Text Italian=&Avanti >
+    end
+    item: Push Button
+      Rectangle=105 187 150 202
+      Variable=DISABLED
+      Value=!
+      Create Flags=01010000000000010000000000000000
+      Text=< &Voltar
+      Text French=< &Retour
+      Text German=< &Zurück
+      Text Spanish=< &Atrás
+      Text Italian=< &Indietro
+    end
+    item: Push Button
+      Rectangle=211 187 256 202
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=&Cancelar
+      Text French=&Annuler
+      Text German=&Abbrechen
+      Text Spanish=&Cancelar
+      Text Italian=&Annulla
+    end
+    item: Static
+      Rectangle=85 41 255 130
+      Create Flags=01010000000000000000000000000000
+      Text=Este programa irá instalar o  %APPTITLE% para Windows.
+      Text=
+      Text=Pressione o botão <Próximo> para iniciar a instalação. Você pode pressionar o botão <Cancelar> se não quiser instalar o %APPTITLE% neste momento.
+      Text French=Ce programme d'installation va installer %APPTITLE%.
+      Text French=
+      Text French=Cliquez sur le bouton Suite pour démarrer l'installation. Vous pouvez cliquer sur le bouton Quitter l'installation si vous ne voulez pas installer %APPTITLE% tout de suite.
+      Text German=Mit diesem Installationsprogramm wird %APPTITLE% installiert.
+      Text German=
+      Text German=Klicken Sie auf "Weiter", um mit der Installation zu beginnen. Klicken Sie auf "Abbrechen", um die Installation von %APPTITLE% abzubrechen.
+      Text Spanish=Este programa de instalación instalará %APPTITLE%.
+      Text Spanish=
+      Text Spanish=Presione el botón Siguiente para iniciar la instalación. Puede presionar el botón Salir de instalación si no desea instalar %APPTITLE% en este momento.
+      Text Italian=Questo programma installerà %APPTITLE%.
+      Text Italian=
+      Text Italian=Per avvviare l'installazione premere il pulsante Avanti. Se non si desidera installare %APPTITLE% ora, premere il pulsante Esci dall'installazione.
+    end
+    item: Static
+      Rectangle=8 180 256 181
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+  end
+end
+item: Custom Dialog Set
+  Name=Select Destination Directory
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=Instalação do %APPTITLE%
+    Title French=Installation de %APPTITLE%
+    Title German=Installation von %APPTITLE%
+    Title Spanish=Instalación de %APPTITLE%
+    Title Italian=Installazione di %APPTITLE%
+    Width=271
+    Height=224
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=150 187 195 202
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=&Próximo >
+      Text French=&Suite >
+      Text German=&Weiter >
+      Text Spanish=&Siguiente >
+      Text Italian=&Avanti >
+    end
+    item: Push Button
+      Rectangle=103 187 148 202
+      Variable=DIRECTION
+      Value=B
+      Create Flags=01010000000000010000000000000000
+      Flags=0000000000000001
+      Text=< &Voltar
+      Text French=< &Retour
+      Text German=< &Zurück
+      Text Spanish=< &Atrás
+      Text Italian=< &Indietro
+    end
+    item: Push Button
+      Rectangle=211 187 256 202
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=&Cancelar
+      Text French=&Annuler
+      Text German=&Abbrechen
+      Text Spanish=&Cancelar
+      Text Italian=&Annulla
+    end
+    item: Static
+      Rectangle=8 180 256 181
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=86 8 258 42
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-21 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Selecione o Diretório de Destino
+      Text French=Sélectionner le répertoire de destination
+      Text German=Zielverzeichnis wählen
+      Text Spanish=Seleccione el directorio de destino
+      Text Italian=Selezionare Directory di destinazione
+    end
+    item: Static
+      Rectangle=86 42 256 106
+      Create Flags=01010000000000000000000000000000
+      Text=Por favor selecione o diretório onde os arquivos do %APPTITLE% serão instalados. 
+      Text=
+      Text="O Espaço Livre Após a Instalação'" está baseado na atual seleção dos arquivos a instalar. Um número negativo indica que não existe espaço para instalar a aplicação no drive escolhido.
+      Text French=Veuillez sélectionner le répertoire dans lequel les fichiers %APPTITLE% doivent être installés.
+      Text German=Geben Sie an, in welchem Verzeichnis die %APPTITLE%-Dateien installiert werden sollen.
+      Text Spanish=Por favor seleccione el directorio donde desee instalar los archivos de %APPTITLE%.
+      Text Italian=Selezionare la directory dove verranno installati i file %APPTITLE%.
+    end
+    item: Static
+      Rectangle=86 109 256 136
+      Action=1
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Push Button
+      Rectangle=208 117 253 132
+      Variable=MAINDIR_SAVE
+      Value=%MAINDIR%
+      Destination Dialog=1
+      Action=2
+      Create Flags=01010000000000010000000000000000
+      Text=&Procurar...
+      Text French=Parcourir
+      Text German=Durchsuchen
+      Text Spanish=Buscar
+      Text Italian=Sfoglie
+    end
+    item: Static
+      Rectangle=90 120 206 131
+      Destination Dialog=2
+      Create Flags=01010000000000000000000000000000
+      Text=%MAINDIR%
+      Text French=%MAINDIR%
+      Text German=%MAINDIR%
+      Text Spanish=%MAINDIR%
+      Text Italian=%MAINDIR%
+    end
+    item: Static
+      Rectangle=195 158 243 168
+      Variable=COMPONENTS
+      Value=MAINDIR
+      Create Flags=01010000000000000000000000000010
+    end
+    item: Static
+      Rectangle=195 148 243 157
+      Value=MAINDIR
+      Create Flags=01010000000000000000000000000010
+    end
+    item: Static
+      Rectangle=90 148 190 159
+      Create Flags=01010000000000000000000000000000
+      Text=Atual Espaço em Disco:
+      Text French=Espace disque requis :
+      Text German=Notwendiger Speicherplatz:
+      Text Spanish=Espacio requerido en el disco:
+      Text Italian=Spazio su disco necessario:
+    end
+    item: Static
+      Rectangle=90 158 179 168
+      Create Flags=01010000000000000000000000000000
+      Text=Espaço Livre Após a Instalação:
+      Text French=Espace disque disponible :
+      Text German=Verbleibender Speicherplatz:
+      Text Spanish=Espacio en disco disponible:
+      Text Italian=Spazio su disco disponibile:
+    end
+    item: Static
+      Rectangle=86 140 256 170
+      Action=1
+      Create Flags=01010000000000000000000000000111
+    end
+  end
+  item: Dialog
+    Title=Select Destination Directory
+    Title French=Sélectionner le répertoire de destination
+    Title German=Zielverzeichnis wählen
+    Title Spanish=Seleccione el directorio de destino
+    Title Italian=Selezionare Directory di destinazione
+    Width=221
+    Height=173
+    Font Name=Helv
+    Font Size=8
+    item: Listbox
+      Rectangle=5 5 163 149
+      Variable=MAINDIR
+      Create Flags=01010000100000010000000101000000
+      Flags=0000110000100010
+      Text=%MAINDIR%
+      Text French=%MAINDIR%
+      Text German=%MAINDIR%
+      Text Spanish=%MAINDIR%
+      Text Italian=%MAINDIR%
+    end
+    item: Push Button
+      Rectangle=167 6 212 21
+      Create Flags=01010000000000010000000000000001
+      Text=OK
+      Text French=OK
+      Text German=OK
+      Text Spanish=Aceptar
+      Text Italian=OK
+    end
+    item: Push Button
+      Rectangle=167 25 212 40
+      Variable=MAINDIR
+      Value=%MAINDIR_SAVE%
+      Create Flags=01010000000000010000000000000000
+      Flags=0000000000000001
+      Text=Cancel
+      Text French=Annuler
+      Text German=Abbrechen
+      Text Spanish=Cancelar
+      Text Italian=Annulla
+    end
+  end
+end
+item: If/While Statement
+  Variable=DISPLAY
+  Value=Selecione o Diretório de Destino
+end
+item: Set Variable
+  Variable=BACKUP
+  Value=%MAINDIR%\BACKUP
+end
+item: End Block
+end
+item: End Block
+end
+item: If/While Statement
+  Variable=DOBACKUP
+  Value=A
+end
+item: Set Variable
+  Variable=BACKUPDIR
+  Value=%BACKUP%
+end
+item: End Block
+end
+item: If/While Statement
+  Variable=BRANDING
+  Value=1
+end
+item: If/While Statement
+  Variable=DOBRAND
+  Value=1
+end
+item: Edit INI File
+  Pathname=%INST%\CUSTDATA.INI
+  Settings=[Registration]
+  Settings=NAME=%NAME%
+  Settings=COMPANY=%COMPANY%
+  Settings=
+end
+item: End Block
+end
+item: End Block
+end
+item: Open/Close INSTALL.LOG
+end
+item: Check Disk Space
+  Component=COMPONENTS
+end
+item: Include Script
+  Pathname=%_WISE_%\INCLUDE\uninstal.wse
+end
+item: Install File
+  Source=f:\Projetos\Hidrologia\Programas\Importador\V2\Plugins\SUDENE_Texto.dll
+  Destination=%MAINDIR%\Importador\Plugins\SUDENE_Texto.dll
+  Flags=0000000010000010
+end
+item: Install File
+  Source=f:\Projetos\Hidrologia\Programas\Importador\V2\Importador.exe
+  Destination=%MAINDIR%\Importador\Importador.exe
+  Flags=0000000010000010
+end
+item: Install File
+  Source=f:\Projetos\Hidrologia\Programas\Importador\V2\Plugins\Excel_4_Simples.dll
+  Destination=%MAINDIR%\Importador\Plugins\Excel_4_Simples.dll
+  Flags=0000000010000010
+end
+item: Install File
+  Source=f:\Projetos\Hidrologia\Programas\Importador\V2\Plugins\HidroWeb_2.dll
+  Destination=%MAINDIR%\Importador\Plugins\HidroWeb_2.dll
+  Flags=0000000010000010
+end
+item: Install File
+  Source=f:\Projetos\Hidrologia\Programas\Importador\V2\Plugins\SUDENE_2_Excel.dll
+  Destination=%MAINDIR%\Importador\Plugins\SUDENE_2_Excel.dll
+  Flags=0000000010000010
+end
+item: Install File
+  Source=c:\Windows\System\vcf132.ocx
+  Destination=%SYS%\vcf132.ocx
+  Flags=0001001010000011
+end
+item: Install File
+  Source=c:\Windows\System\Mfcans32.dll
+  Destination=%SYS%\Mfcans32.dll
+  Flags=0000001010000011
+end
+item: Install File
+  Source=c:\Windows\System\Oc30.dll
+  Destination=%SYS%\Oc30.dll
+  Flags=0000001010000011
+end
+item: Set Variable
+  Variable=COMMON
+  Value=%COMMON%
+  Flags=00010100
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=%MAINDIR%
+  Flags=00010100
+end
+item: Check Configuration
+  Flags=10111011
+end
+item: Get Registry Key Value
+  Variable=STARTUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs\StartUp
+  Value Name=StartUp
+  Flags=00000010
+end
+item: Get Registry Key Value
+  Variable=DESKTOPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Desktop
+  Value Name=Desktop
+  Flags=00000010
+end
+item: Get Registry Key Value
+  Variable=STARTMENUDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu
+  Value Name=Start Menu
+  Flags=00000010
+end
+item: Get Registry Key Value
+  Variable=GROUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Programs
+  Flags=00000010
+end
+item: Get Registry Key Value
+  Variable=CSTARTUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%STARTUPDIR%
+  Value Name=Common Startup
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=CDESKTOPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%DESKTOPDIR%
+  Value Name=Common Desktop
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=CSTARTMENUDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%STARTMENUDIR%
+  Value Name=Common Start Menu
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=CGROUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%GROUPDIR%
+  Value Name=Common Programs
+  Flags=00000100
+end
+item: Set Variable
+  Variable=CGROUP_SAVE
+  Value=%GROUP%
+end
+item: Set Variable
+  Variable=GROUP
+  Value=%GROUPDIR%\%GROUP%
+end
+item: Create Shortcut
+  Source=%MAINDIR%\Importador.exe
+  Destination=%GROUP%\Importador.lnk
+  Icon Number=0
+end
+item: Else Statement
+end
+item: Add ProgMan Icon
+  Group=%GROUP%
+  Icon Name=Importador
+  Command Line=%MAINDIR%\Importador.exe
+  Flags=01000000
+end
+item: End Block
+end
+item: Self-Register OCXs/DLLs
+  Description=Atualizando a Configuração do Sistema,  Por favor aguarde...
+end
+item: Wizard Block
+  Direction Variable=DIRECTION
+  Display Variable=DISPLAY
+  Bitmap Pathname=%_WISE_%\DIALOGS\TEMPLATE\WIZARD.BMP
+  X Position=9
+  Y Position=10
+  Filler Color=8421440
+  Flags=00000011
+end
+item: Custom Dialog Set
+  Name=Finished
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=Instalação do %APPTITLE%
+    Title French=Installation de %APPTITLE%
+    Title German=Installation von %APPTITLE%
+    Title Spanish=Instalación de %APPTITLE%
+    Title Italian=Installazione di %APPTITLE%
+    Width=271
+    Height=224
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=150 187 195 202
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=&Finalizar
+      Text French=&Fin
+      Text German=&Weiter
+      Text Spanish=&Terminar
+      Text Italian=&Fine
+    end
+    item: Push Button
+      Rectangle=105 187 150 202
+      Variable=DISABLED
+      Value=!
+      Create Flags=01010000000000010000000000000000
+      Text=< &Voltar
+      Text French=< &Retour
+      Text German=< &Zurück
+      Text Spanish=< &Atrás
+      Text Italian=< &Indietro
+    end
+    item: Push Button
+      Rectangle=211 187 256 202
+      Variable=DISABLED
+      Value=!
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=&Cancelar
+      Text French=&Annuler
+      Text German=&Abbrechen
+      Text Spanish=&Cancelar
+      Text Italian=&Annulla
+    end
+    item: Static
+      Rectangle=8 180 256 181
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=86 8 258 42
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Instalação Completada
+      Text French=Installation terminée !
+      Text German=Die Installation ist abgeschlossen!
+      Text Spanish=¡Instalación terminada!
+      Text Italian=Installazione completata!
+    end
+    item: Static
+      Rectangle=86 42 256 102
+      Create Flags=01010000000000000000000000000000
+      Text=A instalação do %APPTITLE% foi finalizada com sucesso.
+      Text=
+      Text=Pressione o botão FINALIZAR para sair do programa de instalação.
+      Text French=%APPTITLE% est maintenant installé.
+      Text French=
+      Text French=Cliquez sur le bouton Fin pour quitter l'installation.
+      Text German=%APPTITLE% wurde erfolgreich installiert.
+      Text German=
+      Text German=Klicken Sie auf "Weiter", um die Installation zu beenden.
+      Text Spanish=%APPTITLE% se ha instalado con éxito.
+      Text Spanish=
+      Text Spanish=Presione el botón Terminar para salir de esta instalación.
+      Text Italian=L'installazione %APPTITLE% è stata portata a termine con successo.
+      Text Italian=
+      Text Italian=Premere il pulsante Fine per uscire dall'installazione.
+    end
+  end
+end
+item: End Block
+end
+item: New Event
+  Name=Cancel
+end
+item: Include Script
+  Pathname=%_WISE_%\INCLUDE\rollback.wse
+end

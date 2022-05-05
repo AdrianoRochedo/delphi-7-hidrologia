@@ -1,0 +1,446 @@
+[Closed Files]
+File_0=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\48830000.txt',0,1,1,11,6,0,0
+File_1=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\37220000.txt',0,1,1,1,1,0,0
+File_2=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\38850000.txt',0,1,1,1,1,0,0
+File_3=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\48430000.txt',0,1,1,1,1,0,0
+File_4=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\48460000.txt',0,1,1,1,1,0,0
+File_5=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\48820000.txt',0,1,1,1,1,0,0
+File_6=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\34571000.txt',0,1,1,64,6,0,0
+File_7=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\48840000.txt',0,1,1,1,1,0,0
+File_8=SourceModule,'G:\Temp\Semiarido\dadosSemiAridoAneel\48850000.txt',0,1,1,1,1,0,0
+File_9=SourceModule,'F:\projetos\Comum\lib\SysUtilsEx.pas',0,1,877,1,889,0,0
+
+[Modules]
+Module0=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Rochedo_2_Excel.dpr
+Module1=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\ChuvaCEEE.dpr
+Module2=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\ChuvaDNAAE.dpr
+Module3=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\CodeVasf_1.dpr
+Module4=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Excel_4_Simples.dpr
+Module5=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\HidroWeb.dpr
+Module6=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\HidroWeb_2.dpr
+Module7=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Isareg_Diario.dpr
+Module8=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Isareg_Mensal.dpr
+Module9=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Rochedo_1.dpr
+Module10=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Aneel_CV_Num.dpr
+Module11=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_2_Excel.dpr
+Module12=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_Excel.dpr
+Module13=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_Texto.dpr
+Module14=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\VzoCEEE.dpr
+Module15=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\VzoDNAAE.dpr
+Count=16
+EditWindowCount=1
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Rochedo_2_Excel.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\ChuvaCEEE.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\ChuvaDNAAE.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\CodeVasf_1.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Excel_4_Simples.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\HidroWeb.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\HidroWeb_2.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Isareg_Diario.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Isareg_Mensal.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Rochedo_1.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Aneel_CV_Num.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_2_Excel.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_Excel.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_Texto.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\VzoCEEE.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\VzoDNAAE.dpr]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[F:\Projetos\Hidrologia\Programas\Importador\V2\Versao2.bpg]
+FormState=0
+FormOnTop=0
+
+[EditWindow0]
+ViewCount=16
+CurrentView=0
+View0=0
+View1=1
+View2=2
+View3=3
+View4=4
+View5=5
+View6=6
+View7=7
+View8=8
+View9=9
+View10=10
+View11=11
+View12=12
+View13=13
+View14=14
+View15=15
+CodeExplorer=CodeExplorer@EditWindow0
+MessageView=MessageView@EditWindow0
+Create=1
+Visible=1
+State=0
+Left=0
+Top=103
+Width=799
+Height=471
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=791
+ClientHeight=444
+LeftPanelSize=0
+RightPanelSize=0
+BottomPanelSize=52
+BottomPanelClients=MessageView@EditWindow0
+BottomPanelData=000004000000000000000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
+
+[View0]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Rochedo_2_Excel.dpr
+CursorX=26
+CursorY=28
+TopLine=16
+LeftCol=1
+
+[View1]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\ChuvaCEEE.dpr
+CursorX=23
+CursorY=26
+TopLine=19
+LeftCol=1
+
+[View2]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\ChuvaDNAAE.dpr
+CursorX=29
+CursorY=26
+TopLine=14
+LeftCol=1
+
+[View3]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\CodeVasf_1.dpr
+CursorX=27
+CursorY=26
+TopLine=14
+LeftCol=1
+
+[View4]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Excel_4_Simples.dpr
+CursorX=26
+CursorY=28
+TopLine=16
+LeftCol=1
+
+[View5]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\HidroWeb.dpr
+CursorX=24
+CursorY=25
+TopLine=21
+LeftCol=1
+
+[View6]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\HidroWeb_2.dpr
+CursorX=24
+CursorY=25
+TopLine=15
+LeftCol=1
+
+[View7]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Isareg_Diario.dpr
+CursorX=31
+CursorY=27
+TopLine=15
+LeftCol=1
+
+[View8]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Isareg_Mensal.dpr
+CursorX=31
+CursorY=28
+TopLine=16
+LeftCol=1
+
+[View9]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Rochedo_1.dpr
+CursorX=30
+CursorY=28
+TopLine=15
+LeftCol=1
+
+[View10]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\Aneel_CV_Num.dpr
+CursorX=30
+CursorY=27
+TopLine=15
+LeftCol=1
+
+[View11]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_2_Excel.dpr
+CursorX=25
+CursorY=26
+TopLine=14
+LeftCol=1
+
+[View12]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_Excel.dpr
+CursorX=25
+CursorY=26
+TopLine=14
+LeftCol=1
+
+[View13]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\SUDENE_Texto.dpr
+CursorX=25
+CursorY=27
+TopLine=15
+LeftCol=1
+
+[View14]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\VzoCEEE.dpr
+CursorX=28
+CursorY=26
+TopLine=14
+LeftCol=1
+
+[View15]
+Module=F:\Projetos\Hidrologia\Programas\Importador\Plugins V2\VzoDNAAE.dpr
+CursorX=29
+CursorY=26
+TopLine=14
+LeftCol=1
+
+[Watches]
+Count=0
+
+[Breakpoints]
+Count=0
+
+[AddressBreakpoints]
+Count=0
+
+[Main Window]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=0
+Width=685
+Height=79
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=677
+ClientHeight=52
+
+[ProjectManager]
+Create=1
+Visible=1
+State=0
+Left=374
+Top=81
+Width=430
+Height=489
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=422
+ClientHeight=465
+TBDockHeight=303
+LRDockWidth=438
+Dockable=1
+
+[CPUWindow]
+Create=1
+Visible=0
+State=0
+Left=133
+Top=123
+Width=533
+Height=353
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=525
+ClientHeight=326
+DumpPane=79
+DisassemblyPane=187
+RegisterPane=231
+FlagPane=64
+
+[AlignmentPalette]
+Create=1
+Visible=0
+State=0
+Left=200
+Top=107
+Width=156
+Height=82
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=150
+ClientHeight=60
+
+[PropertyInspector]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=293
+Width=221
+Height=285
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=213
+ClientHeight=261
+TBDockHeight=285
+LRDockWidth=221
+Dockable=0
+SplitPos=85
+ArrangeBy=Name
+SelectedItem=
+ExpandedItems=Miscellaneous
+HiddenCategories=
+
+[WatchWindow]
+Create=1
+Visible=0
+State=0
+Left=189
+Top=225
+Width=421
+Height=149
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=413
+ClientHeight=125
+TBDockHeight=149
+LRDockWidth=421
+Dockable=1
+
+[ModuleWindow]
+Create=1
+Visible=0
+State=0
+Left=0
+Top=78
+Width=800
+Height=494
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=792
+ClientHeight=470
+TBDockHeight=300
+LRDockWidth=638
+Dockable=1
+Column0Width=125
+Column1Width=100
+Column2Width=155
+EntryPointPane=225
+CompUnitPane=250
+
+[ObjectTree]
+Create=1
+Visible=0
+State=0
+Left=0
+Top=135
+Width=221
+Height=156
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=213
+ClientHeight=132
+TBDockHeight=156
+LRDockWidth=221
+Dockable=1
+
+[CodeExplorer@EditWindow0]
+Create=1
+Visible=1
+State=0
+Left=1
+Top=81
+Width=346
+Height=489
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=338
+ClientHeight=465
+TBDockHeight=305
+LRDockWidth=338
+Dockable=1
+
+[MessageView@EditWindow0]
+Create=1
+Visible=1
+State=0
+Left=12
+Top=0
+Width=779
+Height=52
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=779
+ClientHeight=52
+TBDockHeight=52
+LRDockWidth=443
+Dockable=1
+
+[DockHosts]
+DockHostCount=0
+
+[ActiveProject]
+ActiveProject=16
+

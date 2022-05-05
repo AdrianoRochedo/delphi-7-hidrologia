@@ -1,0 +1,67 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Rochedo_2_Excel.dll ChuvaCEEE.dll ChuvaDNAAE.dll CodeVasf_1.dll Excel_4_Simples.dll \
+  HidroWeb.dll HidroWeb_2.dll Isareg_Diario.dll Isareg_Mensal.dll Rochedo_1.dll Aneel_CV_Num.dll \
+  SUDENE_2_Excel.dll SUDENE_Excel.dll SUDENE_Texto.dll VzoCEEE.dll VzoDNAAE.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Rochedo_2_Excel.dll: ..\Plugins V2\Rochedo_2_Excel.dpr
+  $(DCC)
+
+ChuvaCEEE.dll: ..\Plugins V2\ChuvaCEEE.dpr
+  $(DCC)
+
+ChuvaDNAAE.dll: ..\Plugins V2\ChuvaDNAAE.dpr
+  $(DCC)
+
+CodeVasf_1.dll: ..\Plugins V2\CodeVasf_1.dpr
+  $(DCC)
+
+Excel_4_Simples.dll: ..\Plugins V2\Excel_4_Simples.dpr
+  $(DCC)
+
+HidroWeb.dll: ..\Plugins V2\HidroWeb.dpr
+  $(DCC)
+
+HidroWeb_2.dll: ..\Plugins V2\HidroWeb_2.dpr
+  $(DCC)
+
+Isareg_Diario.dll: ..\Plugins V2\Isareg_Diario.dpr
+  $(DCC)
+
+Isareg_Mensal.dll: ..\Plugins V2\Isareg_Mensal.dpr
+  $(DCC)
+
+Rochedo_1.dll: ..\Plugins V2\Rochedo_1.dpr
+  $(DCC)
+
+Aneel_CV_Num.dll: ..\Plugins V2\Aneel_CV_Num.dpr
+  $(DCC)
+
+SUDENE_2_Excel.dll: ..\Plugins V2\SUDENE_2_Excel.dpr
+  $(DCC)
+
+SUDENE_Excel.dll: ..\Plugins V2\SUDENE_Excel.dpr
+  $(DCC)
+
+SUDENE_Texto.dll: ..\Plugins V2\SUDENE_Texto.dpr
+  $(DCC)
+
+VzoCEEE.dll: ..\Plugins V2\VzoCEEE.dpr
+  $(DCC)
+
+VzoDNAAE.dll: ..\Plugins V2\VzoDNAAE.dpr
+  $(DCC)
+
+

@@ -1,0 +1,26 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = MapaBahia.exe Propagar.exe ba_Gerenciador.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+MapaBahia.exe: Mapa\MapaBahia.dpr
+  $(DCC)
+
+Propagar.exe: ..\Propagar\Propagar.dpr
+  $(DCC)
+
+ba_Gerenciador.exe: Gerenciador\ba_Gerenciador.dpr
+  $(DCC)
+
+

@@ -1,0 +1,42 @@
+	SUBROUTINE SCS
+	use var
+
+	READ(1,'(F10.2)') CN
+	S=(1000./CN-10)*25.4
+	PIA=0.2*S
+	TOTE=0.0
+	TOTP=0.0
+	TOTL=0.0
+
+	DO 3 I=1,NTT
+	IF(PIA.LT.PA(I)) GO TO 1
+	PER(I)=PRE(I)
+	EXE(I)=0.0
+	GO TO 2
+1	EXE(I)=(PA(I)-PIA)**2/(PA(I)+0.8*S)-TOTE
+	PER(I)=PRE(I)-EXE(I)
+2	TOTP=TOTP+PER(I)
+	TOTE=TOTE+EXE(I)
+	TOTL=TOTL+PRE(I)
+3	CONTINUE
+
+	PEF=EXE   !PARA IGUALAR AS MATRIZES
+
+ 	WRITE(2,130) CN
+	IF(IPP.EQ.0) GO TO 33
+      WRITE(2,280)
+ 	WRITE(2,260)(I,PRE(I),PA(I),PER(I),EXE(I),I=1,NTT)
+33	WRITE(2,110) TOTL,TOTP,TOTE
+!__________________________________________________________________
+110	FORMAT(2(/),10X,'TOTAL PRECIPITADO',F10.2,' MM',/,10X,'TOTAL',
+     1' DE PERDAS',F12.2,' MM'/,10X,'TOTAL DE EXCESOS ',F10.2,' MM'//)
+130	FORMAT(2(/),10X,'AVALIACAO DE PERDAS'//,
+     1  10X,'METODO DO SCS-EE.UU.',2(/),
+     110X,'CURVA NUMERO (CN) =',F10.0,2(/))
+260	FORMAT(10X,I3,F11.2,F10.2,F9.2,F10.2)
+280     FORMAT(/,10X,'INT',5X,'PRECIP',5X,'PACUM',5X,'PERD ',5X,'PEFCT'/
+     119X,'(MM)',7X,'(MM)',5X,'(MM)',7X,'(MM)'/)
+
+	RETURN
+	END
+C*******************************

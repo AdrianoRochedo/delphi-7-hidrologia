@@ -1,0 +1,801 @@
+unit Principal;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, Menus, ComCtrls, Grids, StdCtrls, Buttons, advClasses, advClasses_Receptor,
+  ImgList, FileCtrl, ch_Tipos, ToolWin, Contnrs;
+
+type
+  TDLG_Principal_Receptor = class(TReceptor)
+  public
+    function ReceiveMessage(Const MSG: TadvMessage): Boolean; override;
+  end;
+
+  TDLG_Principal = class(TForm)
+    spArvore: TSplitter;
+    paArvore: TPanel;
+    Arvore: TTreeView;
+    StatusBar1: TStatusBar;
+    Splitter1: TSplitter;
+    ControlBar1: TControlBar;
+    TbArquivo: TToolBar;
+    btnAbrir: TToolButton;
+    btnSalvarComo: TToolButton;
+    TbVisualizar: TToolBar;
+    btnDados: TToolButton;
+    btnVisDataEdit: TToolButton;
+    btnOperacoesPostos: TToolButton;
+    TbGraficos: TToolBar;
+    btnGraf: TToolButton;
+    btnCalcularNovosPostos: TToolButton;
+    TbAjuda: TToolBar;
+    btnHelp: TToolButton;
+    TbAnalise: TToolBar;
+    btnEstatisca: TToolButton;
+    TbMenu: TToolBar;
+    Open: TOpenDialog;
+    Save: TSaveDialog;
+    MenuCampos: TPopupMenu;
+    Ordenar1: TMenuItem;
+    Menu_NaoOrdenar: TMenuItem;
+    Menu_Crescente: TMenuItem;
+    Menu_Decrescente: TMenuItem;
+    Imagens: TImageList;
+    Menu_Arvore: TPopupMenu;
+    Menu_Arvore_AEsq: TMenuItem;
+    Menu_Arvore_Acima: TMenuItem;
+    imgListBF: TImageList;
+    imgListMenu: TImageList;
+    ImgListGraf: TImageList;
+    MenuPrincipal: TMainMenu;
+    MenuPrincipal1: TMenuItem;
+    MenuPrincipal00_00: TMenuItem;
+    MenuPrincipal00_01: TMenuItem;
+    MenuPrincipal00_02: TMenuItem;
+    MenuPrincipal00_03: TMenuItem;
+    MenuPrincipal02_02: TMenuItem;
+    MenuPrincipal00_03_01: TMenuItem;
+    MenuPrincipal00_03_02: TMenuItem;
+    MenuPrincipal00_03_03: TMenuItem;
+    N5: TMenuItem;
+    MenuPrincipal00_03_04: TMenuItem;
+    MenuPrincipal00_03_05: TMenuItem;
+    MenuPrincipal00_03_06: TMenuItem;
+    N6: TMenuItem;
+    MenuPrincipal00_03_07: TMenuItem;
+    MenuPrincipal00_03_08: TMenuItem;
+    N4: TMenuItem;
+    MenuPrincipal00_04: TMenuItem;
+    MenuPrincipal01: TMenuItem;
+    MenuPrincipal01_00: TMenuItem;
+    MenuPrincipal01_01: TMenuItem;
+    MenuPrincipal01_02: TMenuItem;
+    N8: TMenuItem;
+    MenuPrincipal01_03: TMenuItem;
+    N7: TMenuItem;
+    MenuPrincipal01_04: TMenuItem;
+    MenuPrincipal01_04_00: TMenuItem;
+    MenuPrincipal01_04_01: TMenuItem;
+    MenuPrincipal01_04_02: TMenuItem;
+    MenuPrincipal01_04_03: TMenuItem;
+    MenuPrincipal01_04_04: TMenuItem;
+    MenuPrincipal01_04_05: TMenuItem;
+    MenuPrincipal02: TMenuItem;
+    MenuPrincipal02_00: TMenuItem;
+    MenuPrincipal02_00_00: TMenuItem;
+    MenuPrincipal02_00_01: TMenuItem;
+    MenuPrincipal02_00_02: TMenuItem;
+    MenuPrincipal02_01: TMenuItem;
+    MenuPrincipal03: TMenuItem;
+    MenuPrincipal03_00: TMenuItem;
+    MenuPrincipal03_01: TMenuItem;
+    MenuPrincipal03_02: TMenuItem;
+    MenuPrincipal03_03: TMenuItem;
+    MenuPrincipal04: TMenuItem;
+    MenuPrincipal04_00: TMenuItem;
+    MenuPrincipal04_01: TMenuItem;
+    MenuPrincipal04_02: TMenuItem;
+    N11: TMenuItem;
+    MenuPrincipal04_03: TMenuItem;
+    MenuPrincipal05: TMenuItem;
+    MenuPrincipal05_00: TMenuItem;
+    MenuPrincipal05_01: TMenuItem;
+    MenuPrincipal05_02: TMenuItem;
+    procedure FormCreate(Sender: TObject);
+    procedure ArvoreClick(Sender: TObject);
+    procedure MenuGeral_AbrirClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+{    procedure MenuGeral_FecharTodosClick(Sender: TObject);
+    procedure MenuGeral_SairClick(Sender: TObject);
+    procedure MenuDados_SalvarClick(Sender: TObject);
+    procedure MenuDados_SalvarComoClick(Sender: TObject);
+    procedure MenuDados_FecharClick(Sender: TObject);
+    procedure MenuDados_VisualizarPeriodosValidosClick(Sender: TObject);
+    procedure MenuDados_EstatisticasDeFalhasClick(Sender: TObject);
+    procedure MenuDados_EstatisticasAnuaisClick(Sender: TObject);
+    procedure MenuDados_EstatisticasPorAgrupamentosClick(Sender: TObject);
+    procedure MenuDados_EditarDadosClick(Sender: TObject);
+    procedure MenuDados_ImprimirNoEditorClick(Sender: TObject);
+    procedure MenuDados_CalcularNovosPostosClick(Sender: TObject);
+    procedure MenuDados_Modhac_PLUClick(Sender: TObject);
+    procedure MenuDados_Modhac_VZOClick(Sender: TObject);
+    procedure MenuDados_Modhac_ETPClick(Sender: TObject);
+    procedure MenuDados_Graficos_CPClick(Sender: TObject);
+    procedure MenuDados_Graficos_DuplaMassaClick(Sender: TObject);
+    procedure MenuDados_Graficos_ChuvaXVazoesClick(Sender: TObject);
+    procedure MenuDados_Graficos_GanttClick(Sender: TObject);
+    procedure MenuDados_Propagar_RPLClick(Sender: TObject);
+    procedure MenuDados_Propagar_RETClick(Sender: TObject);
+    procedure MenuDados_Propagar_VZCClick(Sender: TObject);
+    procedure MenuDados_Cascata_RPLClick(Sender: TObject);
+    procedure MenuDados_Cascata_RVZClick(Sender: TObject);
+    procedure MenuGeral_Visualizar_BFClick(Sender: TObject);}
+    procedure Menu_Arvore_AEsqClick(Sender: TObject);
+    procedure Menu_Arvore_AcimaClick(Sender: TObject);
+    procedure Tile1Click(Sender: TObject);
+    procedure Cascade1Click(Sender: TObject);
+    procedure Arrangeicons1Click(Sender: TObject);
+    procedure MenuPrincipal00_03_07Click(Sender: TObject);
+    procedure MenuPrincipal00_00Click(Sender: TObject);
+    procedure MenuPrincipal00_02Click(Sender: TObject);
+    procedure MenuPrincipal00_01Click(Sender: TObject);
+    procedure MenuPrincipal02_02Click(Sender: TObject);
+    procedure MenuPrincipal00_03_01Click(Sender: TObject);
+    procedure MenuPrincipal00_03_02Click(Sender: TObject);
+    procedure MenuPrincipal00_03_03Click(Sender: TObject);
+    procedure MenuPrincipal00_03_04Click(Sender: TObject);
+    procedure MenuPrincipal00_03_05Click(
+      Sender: TObject);
+    procedure MenuPrincipal00_03_06Click(
+      Sender: TObject);
+    procedure MenuPrincipal00_03_08Click(Sender: TObject);
+    procedure MenuPrincipal01_00Click(Sender: TObject);
+    procedure MenuPrincipal01_01Click(Sender: TObject);
+    procedure MenuPrincipal01_02Click(Sender: TObject);
+    procedure MenuPrincipal02_00_00Click(Sender: TObject);
+    procedure MenuPrincipal02_00_01Click(Sender: TObject);
+    procedure MenuPrincipal02_00_02Click(Sender: TObject);
+    procedure MenuPrincipal02_01Click(Sender: TObject);
+    procedure MenuPrincipal03_00Click(Sender: TObject);
+    procedure MenuPrincipal03_01Click(Sender: TObject);
+    procedure MenuPrincipal03_02Click(Sender: TObject);
+    procedure MenuPrincipal03_03Click(Sender: TObject);
+    procedure MenuPrincipal04_00Click(Sender: TObject);
+    procedure MenuPrincipal04_01Click(Sender: TObject);
+    procedure MenuPrincipal04_02Click(Sender: TObject);
+    procedure MenuPrincipal04_03Click(Sender: TObject);
+    procedure MenuPrincipal01_04_00Click(Sender: TObject);
+    procedure MenuPrincipal01_04_01Click(Sender: TObject);
+    procedure MenuPrincipal01_04_02Click(Sender: TObject);
+    procedure MenuPrincipal01_04_03Click(Sender: TObject);
+    procedure MenuPrincipal01_04_05Click(Sender: TObject);
+  private
+    Receptor   : TDLG_Principal_Receptor;
+    FnoDS      : TTreeNode;
+
+    procedure Selecionar(Info: TDSInfo);
+    procedure IncluirNaArvore(Info: TDSInfo);
+    procedure MostrarPropriedades(Info: TDSInfo; NoPai: TTreeNode);
+    procedure AtualizarPropriedades(Info: TDSInfo);
+    procedure Fechar(No: TTreeNode);
+    function  EstaAberto(const NomeArq: String): Boolean;
+    function getInfoSel: TDSInfo;
+  public
+    property InfoSel : TDSInfo read getInfoSel;
+  end;
+
+var
+  DLG_Principal: TDLG_Principal;
+
+
+implementation
+uses WinUtils, SysUtilsEx, GaugeFO, FileUtils, advClasses_Messages, TreeViewUtils, wsgLib,
+     drPlanilha,
+     ch_Vars,
+     ObterPeriodosValidos,
+
+     // Análise dos períodos
+     AnaliseDasFalhas,
+     AnaliseAnual,
+     AnalisePorAgrupamento,
+
+     //Edição
+     OpcoesDeImpressao,
+
+     // Operações
+     CalculoDeNovosPostos,
+     PLU,
+     VZO,
+     ETP,
+
+     //Graficos
+     Graf_CurvaDePermanencia_OPT,
+     Graf_ChuvaXvazao_OPT,
+     Graf_DuplaMassa_OPT,
+     Graf_GANTT;
+
+{$R *.DFM}
+
+{ TDLG_Principal }
+
+procedure TDLG_Principal.Selecionar(Info: TDSInfo);
+begin
+
+end;
+
+procedure TDLG_Principal.Fechar(No: TTreeNode);
+var Info: TDSInfo;
+    Res: Integer;
+begin
+  Info := TDSInfo(No.Data);
+  if Info.DS.Modified then
+     begin
+     Res := MessageDLG(Info.NomeArq + #13'Dados modificados. Salvar as alterações ?',
+            mtConfirmation, [mbYes, mbNo, mbCancel], 0);
+     if Res = mrCancel then Exit;
+     if Res = mrYes then Info.DS.SaveToFile(Info.NomeArq);
+    end;
+  Info.Free;
+  No.Delete;
+end;
+
+procedure TDLG_Principal.MostrarPropriedades(Info: TDSInfo; NoPai: TTreeNode);
+var no2, no3: TTreeNode;
+    i: Integer;
+begin
+  NoPai.DeleteChildren;
+
+  no2 := Arvore.Items.AddChild(NoPai, 'Postos: ' + intToStr(Info.DS.nCols));
+  SetImageIndex(no2, 5);
+  for i := 1 to Info.DS.nCols do
+    begin
+    no3 := Arvore.Items.AddChild(no2, Info.DS.Struct.Col[i].Name);
+    SetImageIndex(no3, 4);
+    end;
+
+  no2 := Arvore.Items.AddChild(NoPai, 'Registros: ' + IntToStr(Info.DS.nRows));
+  SetImageIndex(no2, 5);
+
+  no2 := Arvore.Items.AddChild(NoPai, 'Data Base: ' + DateToStr(Info.DataBase));
+  SetImageIndex(no2, 5);
+
+  no2 := Arvore.Items.AddChild(NoPai, 'Tipo do Intervalo: ' + TipoIntervaloToStr(Info.TipoIntervalo));
+  SetImageIndex(no2, 5);
+
+  no2 := Arvore.Items.AddChild(NoPai, 'Tipo dos Dados: ' + TipoDadosToStr(Info.TipoDados));
+  SetImageIndex(no2, 5);
+end;
+
+
+procedure TDLG_Principal.AtualizarPropriedades(Info: TDSInfo);
+var no: TTreeNode;
+begin
+  no := FindNode(FNoDS, Info);
+  MostrarPropriedades(Info, no);
+end;
+
+procedure TDLG_Principal.IncluirNaArvore(Info: TDSInfo);
+var no: TTreeNode;
+begin
+  no := Arvore.Items.AddChildObject(FnoDS, Info.NomeArq, Info);
+  SetImageIndex(no, 1);
+  MostrarPropriedades(Info, no);
+end;
+
+function TDLG_Principal.EstaAberto(const NomeArq: String): Boolean;
+var i: Integer;
+begin
+  Result := False;
+  for i := 0 to FnoDS.Count-1 do
+    if CompareText(FnoDS[i].Text, NomeArq) = 0 then
+       begin
+       Result := True;
+       Break;
+       end;
+end;
+
+procedure TDLG_Principal.FormCreate(Sender: TObject);
+var Index : integer;
+begin
+  FnoDS := Arvore.Items[0];
+
+  Receptor := TDLG_Principal_Receptor.Create([WINDOWSCREATE]);
+  Receptor.Window := Self;
+end;
+
+procedure TDLG_Principal.ArvoreClick(Sender: TObject);
+var No : TTreeNode;
+    Ok : boolean;
+
+  procedure EnableDisableMenu(B : Boolean);
+  var Index : integer;
+  begin
+    with MenuPrincipal.Items[00] do
+      begin
+      Items[01].Enabled := B;
+      Items[02].Enabled := B;
+      for Index := 0 to Items[03].Count - 1 do
+        Items[03].Items[Index].Enabled :=B;
+      end;
+
+    with MenuPrincipal.Items[01] do
+      begin
+      Items[01].Enabled := B;
+      Items[02].Enabled := B;
+      end;
+
+    //Menu02
+    with MenuPrincipal.Items[02] do
+      begin
+      for Index := 0 to Items[00].Count - 1  do
+        Items[00].Items[Index].Enabled := B;
+      Items[01].Enabled := B;
+      end;
+
+    with MenuPrincipal.Items[03] do
+      begin
+      for Index := 0 to Count -1 do
+        Items[Index].Enabled := B;
+      end;
+  end;
+
+  procedure EnableDisableToolBar(Ok: boolean);
+  begin
+    BtnGraf.Enabled := Ok;
+    BtnEstatisca.Enabled := Ok;
+  end;
+
+
+begin
+  no := Arvore.Selected;
+  Ok := TObject(no.Data) is TDSInfo;
+
+
+  if Ok then
+     Selecionar(TDSInfo(no.Data));
+
+  EnableDisableMenu(Ok);
+  EnableDisableToolBar(Ok);
+end;
+
+procedure TDLG_Principal.MenuGeral_AbrirClick(Sender: TObject);
+var Info: TDSInfo;
+    i: Integer;
+begin
+  if Open.Execute then
+     for i := 0 to open.Files.Count-1 do
+        if not EstaAberto(open.Files[i]) then
+           begin
+           Info := TDSInfo.Create(open.Files[i]);
+           IncluirNaArvore(Info);
+           end
+        else
+           MessageDLG(open.Files[i] + #13'Arquivo já aberto !', mtInformation, [mbOK], 0);
+end;
+
+function TDLG_Principal.getInfoSel: TDSInfo;
+begin
+  Result := TDSInfo(Arvore.Selected.Data);
+end;
+
+{ TDLG_Principal_Receptor }
+
+function TDLG_Principal_Receptor.ReceiveMessage(const MSG: TadvMessage): Boolean;
+begin
+  if MSG.MSG = WINDOWSCREATE then
+     //TForm(MSG.Params[0]).Parent := TDLG_Principal(Window).paJanelas;
+
+  inherited ReceiveMessage(MSG);
+end;
+
+procedure TDLG_Principal.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  MenuPrincipal04_03.OnClick(Sender);
+  CanClose := (FNoDS.Count = 0);
+  Application.Terminate;
+end;
+
+{procedure TDLG_Principal.MenuGeral_FecharTodosClick(Sender: TObject);
+var i: Integer;
+begin
+  for i := FNoDS.Count-1 downto 0 do
+    Fechar(FNoDS[i]);
+end;
+
+procedure TDLG_Principal.MenuGeral_SairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TDLG_Principal.MenuDados_SalvarClick(Sender: TObject);
+begin
+  InfoSel.DS.SaveToFile(InfoSel.DS.FileName);
+end;
+
+procedure TDLG_Principal.MenuDados_SalvarComoClick(Sender: TObject);
+begin
+  if Save.Execute then
+     InfoSel.DS.SaveToFile(Save.FileName);
+end;
+
+procedure TDLG_Principal.MenuDados_FecharClick(Sender: TObject);
+begin
+  Fechar(Arvore.Selected);
+end;
+
+procedure TDLG_Principal.MenuDados_VisualizarPeriodosValidosClick(Sender: TObject);
+begin
+  TDLG_ObterPeriodosValidos.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_EstatisticasDeFalhasClick(Sender: TObject);
+begin
+  TDLG_AnaliseDeFalhas.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_EstatisticasAnuaisClick(Sender: TObject);
+begin
+  TDLG_AnaliseAnual.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_EstatisticasPorAgrupamentosClick(Sender: TObject);
+begin
+  TDLG_AnalisePorAgrupamento.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_EditarDadosClick(Sender: TObject);
+var p: TPlanilha;
+begin
+  p := InfoSel.DS.ShowInSheet;
+  p.Show(fsMDIChild);
+end;
+
+procedure TDLG_Principal.MenuDados_ImprimirNoEditorClick(Sender: TObject);
+var d: TDLG_OpcoesDeImpressao;
+begin
+  d := TDLG_OpcoesDeImpressao.Create(nil);
+  if d.ShowModal = mrCancel then begin d.Free; exit end;
+
+  InfoSel.DS.ImprimirPorData      := d.rbPorData.Checked;
+  InfoSel.DS.CalcularEstatisticas := d.cbEstatisticas.Checked;
+  InfoSel.DS.WriteSeparator       := False;
+  InfoSel.DS.WriteCenter          := d.rbCentralizado.Checked;
+
+  if d._80Colunas.Checked  then LineLen := 80 else
+  if d._132Colunas.Checked then LineLen := 132 else LineLen := 1500;
+
+  d.Free;
+
+  gOutPut.Editor.NewPage;
+  Screen.Cursor := crHourGlass;
+  try
+    InfoSel.DS.Print;
+    gOutPut.Editor.Show;
+    InfoSel.DS.CalcularEstatisticas := False;
+    InfoSel.DS.Modified := False;
+  finally
+    Screen.Cursor := crDefault;
+  end;
+
+end;
+
+procedure TDLG_Principal.MenuDados_CalcularNovosPostosClick(Sender: TObject);
+begin
+  if TDLG_CalcularNovosPostos.Create(InfoSel).ShowModal = mrOk then
+     AtualizarPropriedades(InfoSel)
+end;
+
+procedure TDLG_Principal.MenuDados_Graficos_CPClick(Sender: TObject);
+begin
+  TGRF_CurvaDePermanencia.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Graficos_DuplaMassaClick(Sender: TObject);
+begin
+  TGRF_DuplaMassa.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Graficos_ChuvaXVazoesClick(Sender: TObject);
+begin
+  TGRF_chuvaXvazao.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Graficos_GanttClick(Sender: TObject);
+begin
+  TGRF_Gantt.Create(InfoSel, gPaiDasJanelas).Show;
+end;
+
+procedure TDLG_Principal.MenuDados_Modhac_PLUClick(Sender: TObject);
+begin
+  TDLG_PLU.Create(InfoSel, 'PLU').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Modhac_VZOClick(Sender: TObject);
+begin
+  TDLG_VZO.Create(InfoSel, 'VZO').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Modhac_ETPClick(Sender: TObject);
+begin
+  TDLG_ETP.Create(InfoSel, 'ETP').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Propagar_RPLClick(Sender: TObject);
+begin
+  TDLG_PLU.Create(InfoSel, 'RPL').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Propagar_RETClick(Sender: TObject);
+begin
+  TDLG_ETP.Create(InfoSel, 'RET').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Propagar_VZCClick(Sender: TObject);
+begin
+  TDLG_VZO.Create(InfoSel, 'VZC').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Cascata_RPLClick(Sender: TObject);
+begin
+  TDLG_PLU.Create(InfoSel, 'RPL').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuDados_Cascata_RVZClick(Sender: TObject);
+begin
+  TDLG_VZO.Create(InfoSel, 'RVZ').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuGeral_Visualizar_BFClick(Sender: TObject);
+begin
+//  MenuGeral_Visualizar_BF.Checked := not MenuGeral_Visualizar_BF.Checked;
+//  ControlBar1.
+Visible := MenuGeral_Visualizar_BF.Checked;
+end;}
+
+procedure TDLG_Principal.Menu_Arvore_AEsqClick(Sender: TObject);
+begin
+  Splitter1.Align := alLeft;
+  paArvore.Align  := alLeft;
+  paArvore.Width  := ClientWidth div 3;
+  spArvore.Align  := alLeft;
+  spArvore.Left   := paArvore.Left + paArvore.Width + 5;
+  Arvore.Width    := 1;
+end;
+
+procedure TDLG_Principal.Menu_Arvore_AcimaClick(Sender: TObject);
+begin
+  paArvore.Align  := alTop;
+  paArvore.Height := ClientHeight div 4;
+  spArvore.Top    := paArvore.Top + paArvore.Height + 2;
+  spArvore.Align  := alTop;
+  Arvore.Height   := 1;
+  Splitter1.Align := alTop;
+end;
+
+procedure TDLG_Principal.Tile1Click(Sender: TObject);
+begin
+  Tile;
+end;
+
+procedure TDLG_Principal.Cascade1Click(Sender: TObject);
+begin
+  Cascade;
+end;
+
+procedure TDLG_Principal.Arrangeicons1Click(Sender: TObject);
+begin
+  ArrangeIcons;
+end;
+
+
+procedure TDLG_Principal.MenuPrincipal00_03_07Click(
+  Sender: TObject);
+begin
+  TDLG_PLU.Create(InfoSel, 'RPL').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_00Click(Sender: TObject);
+var Info : TDSInfo;
+    I    : Integer;
+begin
+  if Open.Execute then
+     for i := 0 to open.Files.Count-1 do
+        if not EstaAberto(open.Files[i]) then
+           begin
+           Info := TDSInfo.Create(open.Files[i]);
+           IncluirNaArvore(Info);
+           end
+        else
+           MessageDLG(open.Files[i] + #13'Arquivo já aberto !', mtInformation, [mbOK], 0);
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_02Click(Sender: TObject);
+begin
+  if Save.Execute then
+     InfoSel.DS.SaveToFile(Save.FileName);
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_01Click(Sender: TObject);
+begin
+  InfoSel.DS.SaveToFile(InfoSel.DS.FileName);
+end;
+
+procedure TDLG_Principal.MenuPrincipal02_02Click(Sender: TObject);
+begin
+  if TDLG_CalcularNovosPostos.Create(InfoSel).ShowModal = mrOk then
+     AtualizarPropriedades(InfoSel);
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_03_01Click(Sender: TObject);
+begin
+  TDLG_PLU.Create(InfoSel, 'PLU').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_03_02Click(Sender: TObject);
+begin
+  TDLG_VZO.Create(InfoSel, 'VZO').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_03_03Click(Sender: TObject);
+begin
+  TDLG_ETP.Create(InfoSel, 'ETP').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_03_04Click(
+  Sender: TObject);
+begin
+  TDLG_PLU.Create(InfoSel, 'RPL').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_03_05Click(
+  Sender: TObject);
+begin
+  TDLG_ETP.Create(InfoSel, 'RET').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_03_06Click(
+  Sender: TObject);
+begin
+  TDLG_VZO.Create(InfoSel, 'VZC').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal00_03_08Click(
+  Sender: TObject);
+begin
+  TDLG_VZO.Create(InfoSel, 'RVZ').ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal01_00Click(Sender: TObject);
+begin
+  gOutPut.Editor.Show;
+end;
+
+procedure TDLG_Principal.MenuPrincipal01_01Click(Sender: TObject);
+var d: TDLG_OpcoesDeImpressao;
+begin
+  d := TDLG_OpcoesDeImpressao.Create(nil);
+  if d.ShowModal = mrCancel then
+     begin
+     d.Free;
+     exit;
+     end;
+
+  InfoSel.DS.ImprimirPorData      := d.rbPorData.Checked;
+  InfoSel.DS.CalcularEstatisticas := d.cbEstatisticas.Checked;
+  InfoSel.DS.WriteSeparator       := False;
+  InfoSel.DS.WriteCenter          := d.rbCentralizado.Checked;
+
+  if d._80Colunas.Checked  then LineLen := 80  else
+  if d._132Colunas.Checked then LineLen := 132 else LineLen := 1500;
+
+  d.Free;
+
+  gOutPut.Editor.NewPage;
+  Screen.Cursor := crHourGlass;
+  try
+    InfoSel.DS.Print;
+    gOutPut.Editor.Show;
+    InfoSel.DS.CalcularEstatisticas := False;
+    InfoSel.DS.Modified := False;
+  finally
+    Screen.Cursor := crDefault;
+  end;
+end;
+
+procedure TDLG_Principal.MenuPrincipal01_02Click(Sender: TObject);
+var p: TPlanilha;
+begin
+  p := InfoSel.DS.ShowInSheet;
+  p.Show(fsMDIChild);
+end;
+
+procedure TDLG_Principal.MenuPrincipal02_00_00Click(Sender: TObject);
+begin
+  TDLG_AnaliseDeFalhas.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal02_00_01Click(Sender: TObject);
+begin
+  TDLG_AnaliseAnual.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal02_00_02Click(Sender: TObject);
+begin
+  TDLG_AnalisePorAgrupamento.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal02_01Click(Sender: TObject);
+begin
+  TDLG_ObterPeriodosValidos.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal03_00Click(Sender: TObject);
+begin
+  TGRF_chuvaXvazao.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal03_01Click(Sender: TObject);
+begin
+  TGRF_CurvaDePermanencia.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal03_02Click(Sender: TObject);
+begin
+  TGRF_DuplaMassa.Create(InfoSel).ShowModal;
+end;
+
+procedure TDLG_Principal.MenuPrincipal03_03Click(Sender: TObject);
+begin
+  TGRF_Gantt.Create(InfoSel, gPaiDasJanelas).Show;
+end;
+
+procedure TDLG_Principal.MenuPrincipal04_00Click(Sender: TObject);
+begin
+  Tile;
+end;
+
+procedure TDLG_Principal.MenuPrincipal04_01Click(Sender: TObject);
+begin
+  Cascade;
+end;
+
+procedure TDLG_Principal.MenuPrincipal04_02Click(Sender: TObject);
+begin
+  ArrangeIcons;
+end;
+
+procedure TDLG_Principal.MenuPrincipal04_03Click(Sender: TObject);
+var i: Integer;
+begin
+  for i := FNoDS.Count-1 downto 0 do
+    Fechar(FNoDS[i]);
+end;
+
+procedure TDLG_Principal.MenuPrincipal01_04_00Click(Sender: TObject);
+begin
+  TbGraficos.Visible := MenuPrincipal01_04_00.Checked;
+end;
+
+procedure TDLG_Principal.MenuPrincipal01_04_01Click(Sender: TObject);
+begin
+  TbGraficos.Visible := MenuPrincipal01_04_01.Checked;
+end;
+
+procedure TDLG_Principal.MenuPrincipal01_04_02Click(Sender: TObject);
+begin
+  TbGraficos.Visible := MenuPrincipal01_04_02.Checked;
+end;
+
+procedure TDLG_Principal.MenuPrincipal01_04_03Click(Sender: TObject);
+begin
+  TbGraficos.Visible := MenuPrincipal01_04_03.Checked;
+end;
+
+procedure TDLG_Principal.MenuPrincipal01_04_05Click(Sender: TObject);
+begin
+  TbAjuda.Visible := MenuPrincipal01_04_05.Checked;
+end;
+
+end.

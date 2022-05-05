@@ -1,0 +1,33 @@
+Xara 3D
+Version : 2.11
+Background (HSV) : 0 0 0
+Text colour (HSV) : 239 69 94
+Background (HSV0) : 0 0 0
+Text colour (HSV0) : 2392 692 938
+Light 1 (HSV) : 141 11 92 -24 -64
+Light 1 (HSV0) : 1410 112 924 -24 -64
+Light 2 (HSV) : 45 50 75 6 139
+Light 2 (HSV0) : 450 500 750 6 139
+Light 3 (HSV) : 224 12 57 24 7
+Light 3 (HSV0) : 2241 119 566 24 7
+Observer : 40265318 2 -1
+Font name : Arial
+Font attributes : 100 1 0
+Outline : 0 50
+Justify : 1
+Size : 32
+Line spacing : 80
+Character spacing : 0
+Gloss : 1
+Extrude : 30 1 1 0
+Bevel : 1 60
+Animation : 24 0 1
+Frames per second : 10
+Axis : 0
+Animated : 0
+Text animation : 1
+Light animation : 0
+Text texture : 0
+Texture : 0
+Text : IPHS1
+Text (UNICODE) : IPHS1

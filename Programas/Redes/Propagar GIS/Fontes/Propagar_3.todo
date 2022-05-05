@@ -1,0 +1,9 @@
+{TODO 2 :
+Fazer com que camada adicionada por menu
+fique na posição 0}
+{DONE 1 : Pedir escala da imagem no projeto}
+{TODO : Gerenciar a unidade do mapa (lat-long, metros, etc)}
+{TODO : Gerenciar propriedades do tema e da camada}
+{DONE : Melhorar gerenciamento das camadas}
+{DONE 5 : Criar Instalador}
+{TODO : Salvar posicoes das janelas auxiliares}

@@ -1,0 +1,94 @@
+program Planeja_LibDem_PC_1_a_PC_7;
+
+// Declaração das variáveis
+    // Variáveis pré-inicializadas (só documentação)
+var Saida    : Object; {Variável já inicializada pelo sistema}
+    Projeto  : Object; {Variável já inicializada pelo sistema}
+
+    // Variáveis de trabalho = declaração obrigatória
+    PC_1, PC_2, PC_4, PC_6, PC_7 : Object;   // P/ objetos PC
+    i, dt, NumIntSim             : Integer;
+    LiberaPlaneja                : Object;   // P/ objeto Vetor
+    Libera                       : Real;
+
+    Ret1_2, Ret2_2, Ret3_2     : Real;
+    Ret1_4, Ret2_4, Ret3_4     : Real;
+    Ret1_6, Ret2_6, Ret3_6     : Real;
+    d1_2, d2_2, d3_2, sb_2     : Real;
+    d1_4, d2_4, d3_4, sb_4     : Real;
+    d1_6, d2_6, d3_6, sb_6     : Real;
+    d1_7, d2_7, d3_7, sb_7     : Real;
+
+begin
+  dt := Projeto.DeltaT;
+  NumIntSim := Projeto.Total_IntSim;
+
+  // Inicialização dos PCs
+  PC_1 := Projeto.PCPeloNome('PC_1');
+  PC_2 := Projeto.PCPeloNome('PC_2');
+  PC_4 := Projeto.PCPeloNome('PC_4');
+  PC_6 := Projeto.PCPeloNome('PC_6');
+  PC_7 := Projeto.PCPeloNome('PC_7');
+
+  // -----------------------------------------
+  // Criação da Variável Global
+
+  if dt = 1 then
+    begin
+    // Criação da variável global LiberaPlaneja
+    LiberaPlaneja := wsDFVecCreate(NumIntSim);
+    GlobalObjects.Add('LiberaPlaneja', LiberaPlaneja);
+    end
+  else
+    // Recupera a variável global LiberaPlaneja
+     LiberaPlaneja :=TwsDFVec(GlobalObjects.Get('LiberaPlaneja'));
+
+  // Inicialização de variáveis
+  // Fatores de Retorno
+  Ret1_2 := PC_2.FatorDeRetorno(1);
+  Ret2_2 := PC_2.FatorDeRetorno(2);
+  Ret3_2 := PC_2.FatorDeRetorno(3);
+  Ret1_4 := PC_4.FatorDeRetorno(1);
+  Ret2_4 := PC_4.FatorDeRetorno(2);
+  Ret3_4 := PC_4.FatorDeRetorno(3);
+  Ret1_6 := PC_6.FatorDeRetorno(1);
+  Ret2_6 := PC_6.FatorDeRetorno(2);
+  Ret3_6 := PC_6.FatorDeRetorno(3);
+
+  // Demandas e afluência das Sub-bacias
+
+  d1_2 := PC_2.ObtemValorDemanda(dt, 1, 'T');
+  d2_2 := PC_2.ObtemValorDemanda(dt, 2, 'T');
+  d3_2 := PC_2.ObtemValorDemanda(dt, 3, 'T');
+  sb_2 := PC_2.ObtemVazaoAfluenteSBs;
+
+  d1_4 := PC_4.ObtemValorDemanda(dt, 1, 'T');
+  d2_4 := PC_4.ObtemValorDemanda(dt, 2, 'T');
+  d3_4 := PC_4.ObtemValorDemanda(dt, 3, 'T');
+  sb_4 := PC_4.ObtemVazaoAfluenteSBs;
+    
+  d1_6 := PC_6.ObtemValorDemanda(dt, 1, 'T');
+  d2_6 := PC_6.ObtemValorDemanda(dt, 2, 'T');
+  d3_6 := PC_6.ObtemValorDemanda(dt, 3, 'T');
+  sb_6 := PC_6.ObtemVazaoAfluenteSBs;
+
+  d1_7 := PC_7.ObtemValorDemanda(dt, 1, 'T');
+  d2_7 := PC_7.ObtemValorDemanda(dt, 2, 'T');
+  d3_7 := PC_7.ObtemValorDemanda(dt, 3, 'T');
+  sb_7 := PC_7.ObtemVazaoAfluenteSBs;
+
+  // Cálculo da liberação de água
+
+  Libera := (1- Ret1_2)* d1_2 + (1- Ret2_2)* d2_2 + (1- Ret3_2)* d3_2
+             - sb_2 +
+            (1- Ret1_4)* d1_4 + (1- Ret2_4)* d2_4 + (1- Ret3_4)* d3_4
+             - sb_4 +
+            (1- Ret1_6)* d1_6 + (1- Ret2_6)* d2_6 + (1- Ret3_6)* d3_6
+             - sb_6
+                + d1_7 + d2_7 + d3_7 - sb_7;
+
+  if Libera < 0 then Libera := 0;
+
+  PC_1.AtribuiDefluvioPlanejado(dt, Libera);
+  LiberaPlaneja.Set(dt , Libera);
+end.

@@ -1,0 +1,58 @@
+ 
+Na opção condutos fechados:
+- na versão anterior abria automaticamente as janelas que mostravam o arquivo 
+  Qrua.iph e alagamento.iph, conforme o usuário selecionasse (armazenar ou propagasr superficialmente), 
+  estes devem voltar a abrir automaticamente;
+
+    FEITO
+    O arquivo QRua nao era lido automaticamente.
+    Agora eu inclui a opcao.
+    Para dizer a verdade isto nunca foi alterado e esta funcionando corretamente.
+
+- deve ser corrigido o texto que diz "Propagação de excessos" para "Tratamento de excessos";
+
+    FEITO
+
+- a alteração que vc fez para os trechos paralelos ficou perfeita,
+  só que tem que manter o trecho principal como seção 1.
+  A numeração subsequente é para trechos paralelos. Isto é importante,
+  porque caso o usuário decida redimensionar deve aparecer todas as seções referenciadas.
+  Nesta versão somente aparece seção de referência no redimensionamento se houver trecho paralelo;
+
+    Ficou meio obscuro !!!!
+    Pelo que entendi temos que fixar o tipo da secao do canal principal em 1 (retangular)
+    Eh isto, e ela nao pode mudar ?
+
+- qdo uso trecho paralelo, por exemoplo seção circular, deve aparecer em tom acizentado, 
+  conforme o padrão usado para trecho principal, todos os campo que não são necessários informar;
+
+    FEITO
+
+- ao fazer o diagnóstico, informar se a pessoa selecionou a opção de propagação superficial e
+  esqueceu de colocar a rugosidade da rua;
+
+    FEITO
+ 
+Na opção do reservatório:
+- o "visualizador do nível de água" não está funcionando corretamente. 
+  Na última versão do IPHS1 fortran que te mandei, eu separei todas as saídas do 
+  reservatório (reservatorio.iph). Neste arquivo estão informados nesta ordem: 
+  DT   COTA(M)   Qvert   Qorif    Qbyp   Qsaida.
+
+  A terceira coluna é a vazão do vertedor,
+  a quarta a do orifício,
+  a quinta do by-pass e
+  a sexta é a soma de todas as saídas.
+
+  Então você deve somente graficar essas colunas.
+  Este mesmo arquivo vc deve usar para exibir a opção "visualizar cotas,
+  qvert e q bypas.." e tb para a plotagem. 
+  As cotas são a segunda coluna do arquivo reservatório.iph.
+ 
+Finalmente, além desta observações, verifiquei que não foram realizadas as 
+correções que eu havia mencionado anteriormente, seguem em anexo.
+Qualquer dúvida, estou à disposição!
+ 
+Até mais
+Ruth
+ 

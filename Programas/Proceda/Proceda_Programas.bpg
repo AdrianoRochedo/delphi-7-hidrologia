@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = PROCEDA.exe WinStat.exe Propagar_3.exe Configuracoes.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+PROCEDA.exe: PROCEDA.dpr
+  $(DCC)
+
+WinStat.exe: ..\..\..\WinStat\WinStat PROG\WinStat.dpr
+  $(DCC)
+
+Propagar_3.exe: ..\Redes\Propagar 3.0\Fontes\Propagar_3.dpr
+  $(DCC)
+
+Configuracoes.exe: ..\..\..\Lib\Graficos\Testes\Configuracoes\Configuracoes.dpr
+  $(DCC)
+
+

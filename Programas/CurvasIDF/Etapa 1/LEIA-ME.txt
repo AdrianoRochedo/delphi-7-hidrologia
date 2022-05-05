@@ -1,0 +1,2 @@
+Binários serão gerados em:
+  E:\Projetos\Hidrologia\Programas\Redes\IPHS1\Bin

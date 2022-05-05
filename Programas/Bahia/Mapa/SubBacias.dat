@@ -1,0 +1,14 @@
+[GERAL]
+NumSubBacias=1
+SB1=PSO 02
+
+[PSO 02]
+Comentario=Bacia do Rio Paramirim
+NumCenarios=2
+Nome C1=Cenário 1997
+Comentario C1=Cenário atual sem barramentos
+Arquivo C1=Arquivos\PSO_02\Cenario1997.prg
+Nome C2=Cenário 1997R
+Comentario C2=Cenario atual com barramentos
+Arquivo C2=Arquivos\PSO_02\Cenario1997R.prg
+

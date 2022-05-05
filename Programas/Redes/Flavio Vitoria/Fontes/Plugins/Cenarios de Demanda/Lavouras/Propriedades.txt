@@ -1,0 +1,131 @@
+Lavoura
+    // Tabelas
+    // Retorna os valores anuais (usuário)
+    function RendimentoDaCultura          (ano: Integer): real;
+    function RendimentoDaCulturaIrrigada  (ano: Integer): real;
+    function ValorProdutoMercado          (ano: Integer): real;
+    function ValorProducaoAgropecuaria    (ano: Integer): real;
+    function RendimentoPotencialCalculado (ano: Integer): real;
+
+    // Retorna a eficiencia do sistema dependendo do
+    // sistema de irrigação empregado (usuário)
+    function EficienciaDoSistema(): real;
+
+    // Retorna o custo de produção em dolares dependento do
+    // sistema de irrigação empregado (usuário)
+    function CustoPorHectar(): integer;
+
+    // Manejos simulados
+    Resultados: TResultados;
+
+// Lista dos Manejos simulados por uma lavoura
+Resultados
+
+// Manejo
+Resultado
+    // Descrição do manejo
+    property Descricao : string;
+
+    // Indica s o manejo está ativo
+    // Esta indicação é feita do usuário
+    property Ativado : boolean;
+
+    // Indica se o manejo é irrigado
+    property Irrigado : boolean;
+
+    // Representa os anos de simulação
+    property Anos : TListaDeAnos;
+
+    // Necessidades de Demanda
+    property Reqs : TwsDataSet;
+
+    // Vazao Unitaria a 80%
+    property VU_80 : real;
+
+    // Vazao da Bomba a 18 horas/dia
+    // VB_18 = (VU_80 / Lavoura.EficienciaDoSistema) * 3.6 * 1.333
+    property VB_18 : real;
+
+    // Vazao Bomba do Sistema de Irrigacao
+    // VB_SI = VB_18 * Lavoura.Area
+    property VB_SI : real;
+
+// Dados sobre os anos de um manejo
+ListaDeAnos
+
+// Dados sobre um ano de manejo
+AnoSimulado
+    // Ano da Cultura
+    property Ano : integer;
+
+    // Esquema de rega utilizado
+    property Esquema : integer;
+
+    // Rendimento Potencial Local Calculado
+    // RPLC = Lavoura.RendimentoPotencialCalculado(Ano)
+    property RPLC : real;
+
+    // Valor do Produto no Mercado
+    // VPM = Lavoura.ValorProdutoMercado(Ano)
+    property VPM : real;
+
+    // Valor da Produção Agropecuária
+    // VPA = Lavoura.ValorProducaoAgropecuaria(Ano)
+    property VPA : real;
+
+    // Rendimento da cultura nao irrigada
+    // Rcul = Lavoura.RendimentoDaCultura(Ano);
+    property Rcul : real;
+
+    // Rendimento da cultura Irrigada
+    // RCulI = Lavoura.RendimentoDaCulturaIrrigada(Ano)
+    property RculI : real;
+
+    // Produtividade da Chuva
+    // PR_CHU = Rcul / ETa
+    property PR_CHU : real;
+
+    // Rendimento Potencial da Cultura
+    // RPcul = RculI / (1-FQ)  --> para culturas irrigadas
+    // RPcul = Rcul  / (1-FQ)  --> para culturas não irrigadas
+    property RPcul : real;
+
+    // Coeficiente de Conversao de Chuva
+    // CCC = ETa / Chuva
+    property CCC : real;
+
+    // Coeficiente de Conversao de Chuva Potencial
+    // CCCP = ETm / Chuva
+    property CCCP : real;
+
+    // Coeficiente de Chuva
+    // CC = CCCP - CCC;
+    property CC : real;
+
+    // Evapotranspiracao Real da Cultura nao Irrigada (arquivo)
+    property ETa : real;
+
+    // Evapotranspiracao Potencial da Cultura (arquivo)
+    property ETm : real;
+
+    // Quebra de Producao Estimada (arquivo)
+    property Q : real;
+
+    // Chuva no Ciclo da cultura (arquivo)
+    property Chuva : real;
+
+    // -- SOMENTE CULTURAS IRRIGADAS --------------------------------------
+
+    // Lamina de Irrigacao no Ciclo (arquivo)
+    property LIC : real;
+
+    // Produtividade Total da Agua com Irrigacao
+    // PR_Chu_IRR = Rcul / ETa
+    property PR_CHU_IRR : real;
+
+    // Intervalos (dias) de Irrigacao de Pico (arquivo)
+    property II_P : real;
+
+    //Obtem a demanda de um mes (arquivo)
+    property Demanda[Mes: integer] : real;
+

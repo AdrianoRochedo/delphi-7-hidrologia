@@ -1,0 +1,60 @@
+Tabela1.Código
+Tabela1.Nome do produtor
+Tabela1.Endereco
+Tabela1.Acesso
+Tabela1.Municipio
+Tabela1.Fone
+Tabela1.Insc Estadual
+Tabela1.CPF
+Tabela1.Masculinos
+Tabela1.Femininos
+Tabela1.Qual principal atividade
+Tabela1.Area total
+Tabela1.Area propria
+Tabela1.Area arrendada
+Tabela3.Prod
+Tabela3.Ofesp
+Tabela3.Meccon
+Tabela3.Cirmeq
+Tabela3.ma
+Tabela3.lar
+Tabela5.cnpq
+Tabela5.balcao
+Tabela5.estrada
+Tabela5.portaemporta
+Tabela5.institucional
+Tabela5.industria
+Tabela5.feiras
+Tabela5.carro
+Tabela5.caminhonete
+Tabela5.caminhao
+Tabela5.carroca
+Tabela5.prind
+Tabela5.plcal
+Tabela5.dfpar
+Tabela5.prass
+Tabela5.prmer
+Tabela6.credito
+Tabela6.insumos
+Tabela6.asstec
+Tabela6.pesq
+Tabela6.mdobra
+Tabela6.ambfam
+Tabela6.loccom
+Tabela6.contra
+Tabela6.transp
+Tabela6.pqtlnao
+Tabela6.lxorg
+Tabela6.lxqui
+Tabela6.outros
+Tabela6.locarm
+Tabela6.destina
+Tabela6.locarm1
+Tabela6.destina1
+Tabela6.locarm2
+Tabela6.destina2
+Tabela7.naopq
+Tabela7.naopq1
+Tabela7.naopq2
+
+

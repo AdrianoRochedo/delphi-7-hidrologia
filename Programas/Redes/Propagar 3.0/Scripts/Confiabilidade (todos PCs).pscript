@@ -1,0 +1,139 @@
+Program Confiabilidade_TodosPCs;
+
+// Variáveis pré-declaradas
+   // Saida   : TwsOutPut
+   // Projeto : TprProjeto_Rosen
+
+var
+  Alpha    : Real;
+  TFmedio  : Real;
+  Resil    : Real;
+  VulTot   : Real;
+  VulRelat : Real;
+
+  IntTotal : Integer;
+  i        : Integer;
+  iPC      : Integer;
+  Zt       : Integer;
+  Wt       : Integer;
+  Cor      : Integer;
+
+  DemRef   : Object;
+  DemAtend : Object;
+  PC       : Object;
+
+  Planilha : Object;
+  Grafico  : Object;
+  S1       : Object;
+  S2       : Object;
+  S3       : Object;
+  S4       : Object;
+
+  Aux      : Real;
+  Soma     : Real;
+
+  Pri_Demanda : Integer;
+  Cat_Demanda : String;
+
+Begin
+  // Parâmetros iniciais
+  Pri_Demanda := 3;
+  Cat_Demanda := 'T';
+
+  // Intervalo total
+  IntTotal := Projeto.Total_IntSim;
+
+  // Preparação dos vetores
+  DemRef := wsDFVecCreate(IntTotal);
+  DemAtend := wsDFVecCreate(IntTotal);
+
+  // Objetos para apresentação dos resultados
+  Planilha := CreateObject('TPlanilha');
+  Planilha.Write(1, 1, 'Resultado dos Índices Probabilísticos');
+  Planilha.Write(2, 1, 'Projeto ' + Projeto.Nome);
+  Planilha.Write(4, 2, 'I.C.');
+  Planilha.Write(4, 3, 'I.R.');
+  Planilha.Write(4, 4, 'I.V.R.');
+  Planilha.Write(4, 5, 'I.V.T.');
+
+  Grafico := CreateObject('TgrGrafico');
+  S1 := Grafico.Series.AddBarSerie('I.C.',   getColor('red'),    0, 1);
+  S2 := Grafico.Series.AddBarSerie('I.R.',   getColor('green'),  0, 1);
+  S3 := Grafico.Series.AddBarSerie('I.V.R.', getColor('yellow'), 0, 1);
+  S4 := Grafico.Series.AddBarSerie('I.V.T.', getColor('blue'),   0, 1);
+
+  Cor := getColor('TeeColor');
+
+  // Calculo dos índices para todos os PCs
+  for iPC := 0 to Projeto.NumPCs-1 do
+    begin
+    PC := Projeto.PC(iPC);
+
+    // Incialização dos vetores de Demandas
+    for i := 1 to IntTotal do
+      Begin
+      Aux := PC.ObtemValorDemanda(i, Pri_Demanda, Cat_Demanda);
+      DemRef.Set(i, Aux);
+      DemAtend.Set(i, Aux);
+      end;
+
+    // Índice de Confiabilidade
+    Soma := 0;
+    for i:= 1 to IntTotal do
+      Begin
+      if DemAtend.Get(i) < DemRef.Get(i) then Zt :=0 else Zt:= 1;
+      Soma := Soma + Zt;
+      end;
+    Alpha := Soma/IntTotal;
+
+    //Índice de Resiliência
+    Soma := 0;
+    for i:= 1 to IntTotal-1 do
+      Begin
+      if Not(DemAtend.Get(i) < DemRef.Get(i)) and
+         (DemAtend.Get(i+1) < DemRef.Get(i+1)) then Wt :=1 else Wt:= 0;
+      Soma := Soma + Wt;
+      end;
+    Aux := Soma/(IntTotal-1);
+    TFmedio := (1-Alpha);
+    if TFmedio = 0 then Resil := 0 else Resil :=1/TFmedio;
+
+    //Índice de Vulnerabilidade
+    Soma    := 0;
+    VulTot  := 0;
+    for i := 1 to IntTotal do
+      if DemAtend.Get(i) < DemRef.Get(i) then
+         Begin
+         VulTot := VulTot + DemRef.Get(i) - DemAtend.Get(i);
+         Soma   := Soma + DemRef.Get(i);
+         end;
+    if Soma = 0 then VulRelat := 0 else VulRelat := VulTot/Soma;
+
+    // Apresentação dos resultados
+    Planilha.Write(5 + iPC, 1, PC.Nome);
+    Planilha.WriteFloat(5 + iPC, 2, Alpha);
+    Planilha.WriteFloat(5 + iPC, 3, Resil);
+    Planilha.WriteFloat(5 + iPC, 4, VulRelat);
+    Planilha.WriteFloat(5 + iPC, 5, VulTot);
+
+    S1.AddEx(Alpha,    PC.Nome, Cor);
+    S2.AddEx(Resil,    PC.Nome, Cor);
+    S3.AddEx(VulRelat, PC.Nome, Cor);
+    S4.AddEx(VulTot,   PC.Nome, Cor);
+    end;
+
+  // Mostra os dados em forma de planilha e gráfico
+  Planilha.Show;
+  Grafico.Show;
+
+  // Liberação dos objetos criados temporariamente
+  FreeObject(DemRef);
+  FreeObject(DemAtend);
+
+  {
+  ATENÇÃO:
+     Os objetos Planilha, Grafico e Series (S1..S4) não deverão ser destruídos
+     pois continuarão a existirem após a execução de script (mostrarão os dados) e
+     serão destruídos automaticamente ao serem fechados pelo usuário.
+  }    
+end.

@@ -1,0 +1,348 @@
+Program AnaliseProdChuIrrigMane1;
+
+    { OBJETIVO PRIMEIRO: (Reflete os Totais Precipitados no Ciclo e o atendimento Efetivo da Cultura)
+     Percorrer todos as lavouras, selecionar uma cultura pre-estabelecida,
+     e inserir os resultados de sua produtividade ano a ano em uma planilha.
+
+     Formato da Planilha:
+           Milho_1    Milho_2    Milho_n    Media
+     1974        x          x          x        m
+     1975        x          x          x        m
+     ...       ...        ...        ...      ...
+     1999        x          x          x        m
+
+     OBJETIVO SEGUNDO:
+     Plotar os valores da planilha anterior em um gráfico
+
+     OBJETIVO TERCEIRO:
+     Ler os resultados armazenados na planilha anterior para cada lavoura
+     e calcular uma CURVA DE PROBABILIDADE DE NÃO-EXCEDÊNCIA PARA OS VALORES
+     DAS PRODUTIVIDADES da seguinte forma:
+
+         Formato da Planilha:
+     Prob.      Milho_1    Milho_2    Milho_n    Media 1   Média 2
+     1            x          x          x        m 1         m 2
+     2            x          x          x        m 1         m 2
+     ...         ...        ...        ...      ...       ...
+     100          x          x          x        m 1        m 2
+
+     Media 1 = CP da média de valores
+     Media 2 = Média das CPs
+
+     OBJETIVO QUARTO:
+     Plotar os valores da planilha anterior em um gráfico
+     }
+
+   // SUB-ROTINAS (Exemplos)
+
+   procedure EscreveCabecalhoDasLinhas(p: Object);
+   var ano: integer;
+       L  : integer;
+   begin
+     // A tipagem aqui eh necessaria pois o parametro eh um objeto puro
+     p := TSpreadSheetBook(p);
+
+     L := 2;
+     for ano := 1974 to 1999 do
+       begin
+       p.ActiveSheet.setCellFont(L, 1, '', 0, 0, true, false);
+       p.ActiveSheet.writeText(L, 1, toString(ano));
+       L := L + 1;
+       end;
+   end;
+   
+   procedure EscreveNaColunaDaPlanilha(p, Lav: object; Col: integer);
+   var pr : real;
+       s  : string;
+       ano, L: integer;
+   begin
+     // A tipagem aqui eh necessaria pois os parametros sao objetos puros
+     p   := TSpreadSheetBook(p);
+     Lav := TprCenarioDeDemanda(Lav);
+
+     L := 2;
+     for ano := 1974 to 1999 do
+       begin
+       pr := Lav.ObterValorFloat('Manejo_1.' + toString(ano) + '.PR_CHU_IRR');
+       p.ActiveSheet.WriteFloat(L, Col, pr, 2);
+       L := L + 1;
+       end;
+   end;
+
+
+
+// Variáveis pré-declaradas
+//   Saida   : TwsOutPut
+//   Projeto : TprProjeto_Rosen
+
+var
+   // Variaveis auxiliares
+   i, j, k, ano   : integer;
+   ColunaPlanilha : Integer;
+   pr             : real;
+   s, Cultura     : string;
+   LavNome        : string;
+   CultNome       : string;
+   CountLav       : Integer;
+   Aux            : Real;
+   sAux           : string;
+   sInputCult     : string;
+   indPosi        : integer;
+
+   // Referencia a objetos
+   PC  : object;
+   DM  : object;
+   Lav : object;
+
+   // Relatorios
+   PlanilhaCP  : object;
+   PlanilhaVAL : object;
+   // Vetores
+   vIndiceSerie : Object;
+   vSerie       : Object;
+   vSerieDecr   : Object;
+   vFreq        : Object;
+   vMediaVAL    : Object;
+   vMediaCP     : Object;
+   vSoma        : Object;
+   vAux         : Object;
+   vIAux        : Object;
+
+   // variaveis para grafico
+   Grafico1   : Object;
+   Serie1    : Object;
+   Grafico2   : Object;
+   Serie2    : Object;
+   Cor       : Integer;
+
+   //
+   NomeArquivo : String;
+   NomeSerie   : String;
+
+   NLP  : Integer;
+   NLV  : Integer;
+
+
+// Bloco Principal
+begin
+  // Inicializa variáveis auxiliares para CULTURA e CONTADOR DE LAVOURA
+     // Genereralizar para Escolha Lavoura                                           
+     // Generaliza a Leitura nome Lavoura
+
+  sInputCult := 'Milho';
+  //Cultura  := 'Milho';
+  Cultura  := InputBox('Select the crooping to analise', 'CROP', sInputCult);
+  CountLav := 0;
+  ColunaPlanilha := 1;
+
+  
+  //saida.writeln(Cultura );
+  
+
+  // Cria os objetos PlanilhaCP e PlanilhaVal
+  // Um objeto eh sempre criado passando seu "tipo" para a funcao "CreateObject"
+  PlanilhaVAL := CreateObject(TSpreadSheetBook);
+  PlanilhaCP  := CreateObject(TSpreadSheetBook);
+
+  // Criação de Vetores
+  NLV := (1999-1974) + 1;
+  NLP := NLV + 1;
+  vIndiceSerie := CreateObject(TwsDFVec, NLV);
+  vSerie       := CreateObject(TwsDFVec, NLV);
+  vSerieDecr   := CreateObject(TwsDFVec, NLV);
+  vFreq        := CreateObject(TwsDFVec, NLV);
+  vMediaVAL    := CreateObject(TwsDFVec, NLV);
+  vSoma        := CreateObject(TwsDFVec, NLV);
+  vAux         := CreateObject(TwsDFVec, NLV);
+  vIAux        := CreateObject(TwsLIVec, NLV);
+
+  // Seta o titulo da janela que contem a planilha
+//    PlanilhaVAL.setCaption(' Índices de Produtividade da Chuva Com Irrigação');
+//    PlanilhaCP.setCaption(' Curva de Probabilidade de Não-excedência para Índices de Produtividade da Chuva Com Irrigação');
+
+  // Exemplo de utilizacao de uma sub-rotinas
+   EscreveCabecalhoDasLinhas(PlanilhaVAL);
+
+  // percorre todos os PCs
+  for i := 0 to Projeto.NumPCs-1 do
+    begin
+    PC := Projeto.PC(i);
+
+    // percorre todas as demandas de um PC
+    for k := 0 to PC.Demandas-1 do
+      begin
+      DM := PC.Demanda(k);
+
+      // Verifica se a demanda possui uma Lavoura
+
+      if DM.Cenarios = 1 then
+         begin
+         // Obtem a primeira e unica Lavoura desta demanda (preliminar)
+         Lav      := DM.Cenario(0);
+         LavNome  := Lav.Nome;
+
+         indPosi := Pos('_', LavNome);
+         saida.writeln(LavNome);
+         saida.writeln(valtostr(indPosi));
+         CultNome := Copy (LavNome, 1, indPosi-1);
+         if CultNome = Cultura then
+            begin
+            CountLav := CountLav + 1;
+            // Indica a proaxima coluna da planilha a ser preenchida
+            ColunaPlanilha := ColunaPlanilha + 1;
+            // Escreve o nome das lavouras na 1. linha da planilha
+            PlanilhaVAL.ActiveSheet.setCellFont(1, ColunaPlanilha, '', 10, 0, true, false);
+//            PlanilhaVAL.setCellFont(1, ColunaPlanilha, '', 10, 0, true, false, false);
+            PlanilhaVAL.ActiveSheet.WriteText(1, ColunaPlanilha, Lav.Nome);
+//            PlanilhaVAL.WriteText(1, ColunaPlanilha, Lav.Nome);
+            // Escreve a lavoura em uma coluna da planilha
+            EscreveNaColunaDaPlanilha(PlanilhaVAL, Lav, ColunaPlanilha);
+            end; // if CultNome
+         end; // if Cenarios
+      end; // for k
+    end; // for i  => termina aqui a contagem do número de lavouras com a cultura escolhida
+
+  // calcular média dos valores do Indices de Produtividade da Chuva
+  // colocar na PlanilhaVAL
+
+  for j := 1 to NLV do vSoma.Set(j, 0);
+
+  for i := 1 to CountLav do
+    begin
+    // Le vetor na coluna da PlanilhaVal
+    vSerie := PlanilhaVal.ActiveSheet.ColToVec( i+1, 2, NLP );
+    Aux    := vSerie.Sum(k);
+    PlanilhaVAL.ActiveSheet.setCellFont(NLP+1, 1, '', 10, 0, true, false);
+    if i = 1 then PlanilhaVal.ActiveSheet.writeText(NLP+1, 1 , 'Média');
+    PlanilhaVal.ActiveSheet.writeFloat(NLP+1, CountLav+1, Aux, 2);
+    // Acrescenta vSerie em vSoma
+    vSoma := VecSum(vSoma , vSerie);
+    end;
+    // Calcula a media usando Produto Escalar de Vetor
+    vMediaVAL := ProdEscVec(1/CountLav , vSoma);
+    // Coloca o vetor da média na coluna
+    PlanilhaVAL.ActiveSheet.setCellFont(1, CountLav+2, '', 10, 0, true, false);
+    PlanilhaVAL.ActiveSheet.WriteText(1, CountLav+2, 'Média');
+    PlanilhaVal.ActiveSheet.WriteVecInCol(vMediaVAL, CountLav+2 , 2 , 2 );
+
+  // Plotar Gráfico de Produtividade da Chuva
+
+  // Monta o gráfico
+   Cor := getColor('TeeColor');
+   Grafico2 := CreateObject(TfoChart);
+   Grafico2.Chart.LeftAxis.SetLogarithmic(false);
+   Grafico2.Chart.SetView3D(False);
+   Grafico2.Chart.Title.Add('Produtividade da Chuva e Irrigação (Kg/m3) - PR_CHU_IRR - Manejo 1');
+   vIAux := PlanilhaVAL.ActiveSheet.ColToVec( 1, 2, NLP );
+
+   for i :=  1 to CountLav do
+     begin
+     NomeSerie := PlanilhaVAL.ActiveSheet.GetText( 1, i+1);
+     Serie2 := Grafico2.Series.AddLineSerie(NomeSerie, Cor);
+     vSerie := PlanilhaVAL.ActiveSheet.ColToVec( i+1, 2, NLP );
+     for j := 1 to NLV do
+      begin
+      Serie2.AddXY(vIAux.Get(j), vSerie.Get(j), '', Cor);
+      end;
+     end;
+     NomeSerie := PlanilhaVAL.ActiveSheet.GetText( 1, CountLav+2);
+     Serie2 := Grafico2.Series.AddLineSerie(NomeSerie, Cor);
+     vSerie := PlanilhaVAL.ActiveSheet.ColToVec( CountLav+2, 2, NLP );
+     for j := 1 to NLV do
+      begin
+      Serie2.AddXY(vIAux.Get(j), vSerie.Get(j), '', Cor);
+      end;
+
+
+
+   
+  // ========================================================================
+  // Calcular a CURVA DE PROBABILIDADE DE NÃO-EXCEDÊNCIA PARA OS VALORES
+  // DAS PRODUTIVIDADES
+    // Calcula frequencia e coloca na primeira coluna da PlanilhaCP
+    PlanilhaCP.ActiveSheet.setCellFont(1, 1, '', 10, 0, true, false);
+    PlanilhaCP.ActiveSheet.WriteText(1, 1, 'Prob.(%)');
+    for i := 1 to NLV do vFreq.Set(i, (100*i/NLV));
+    PlanilhaCP.ActiveSheet.WriteVecInCol(vFreq, 1 , 2 , 2 );
+
+    // coloca os vetores de produtividade em ordem decrescente e nas colunas
+    // correspondentes na PlanilhaCP
+
+    for i := 1 to CountLav do
+      begin
+      PlanilhaCP.ActiveSheet.setCellFont(1, i+1, '', 10, 0, true, false);
+      sAux := PlanilhaVAL.ActiveSheet.GetText( 1, i+1);
+      PlanilhaCP.ActiveSheet.WriteText(1, i+1, sAux);
+      vSerieDecr := PlanilhaVal.ActiveSheet.ColToVec( i+1, 2, NLP );
+      vSerieDecr.Sort(false, false);
+      PlanilhaCP.ActiveSheet.WriteVecInCol(vSerieDecr, i+1, 2 , 2 );
+      end;
+      PlanilhaCP.ActiveSheet.setCellFont(1, CountLav+2, '', 10, 0, true, false);
+      sAux := PlanilhaVAL.ActiveSheet.GetText( 1, CountLav+2);
+      PlanilhaCP.ActiveSheet.WriteText(1, i+1, 'CC.Méd');
+      vSerieDecr := PlanilhaVal.ActiveSheet.ColToVec( CountLav+2, 2, NLP );
+      vSerieDecr.Sort(false, false);
+      PlanilhaCP.ActiveSheet.WriteVecInCol(vSerieDecr, CountLav+2, 2 , 2 );
+
+   for j := 1 to NLV do vSoma.Set(j, 0);
+   for i := 1 to CountLav do
+      begin
+      vSerie := PlanilhaCP.ActiveSheet.ColToVec( i+1, 2, NLP );
+      // Acrescenta vSerie em vSoma
+      vSoma := VecSum(vSoma , vSerie);
+      end;
+    // Calcula a media usando Produto Escalar de Vetor
+    vMediaCP := ProdEscVec(1/CountLav , vSoma);
+    // Coloca o vetor da média na coluna
+    PlanilhaCP.ActiveSheet.setCellFont(1, CountLav+3, '', 10, 0, true, false);
+    PlanilhaCP.ActiveSheet.WriteText(1, CountLav+3, 'Méd.CC.');
+    PlanilhaCP.ActiveSheet.WriteVecInCol(vMediaCP, CountLav+3, 2, 2);
+
+  // Plotar a CURVA DE PROBABILIDADE DE NÃO-EXCEDÊNCIA PARA OS VALORES
+  // DAS PRODUTIVIDADES
+
+  // Monta o gráfico
+   Cor := getColor('TeeColor');
+   Grafico1 := CreateObject(TfoChart);
+   Grafico1.Chart.LeftAxis.SetLogarithmic(false);
+   Grafico1.Chart.SetView3D(False);
+   Grafico1.Chart.Title.Add('Curva de Permanência Produtividade da Chuva-Irrigação (Kg/m3)- PR_CHU_IRR-Manejo 1');
+   for i :=  1 to CountLav do
+     begin
+     NomeSerie := PlanilhaCP.ActiveSheet.GetText( 1, i+1);
+     Serie1 := Grafico1.Series.AddLineSerie(NomeSerie, Cor);
+     vSerieDecr := PlanilhaCP.ActiveSheet.ColToVec( i+1, 2, NLP );
+     for j := 1 to NLV do
+      begin
+      Serie1.AddXY(vFreq.Get(j), vSerieDecr.Get(j), '', Cor);
+      end;
+     end;
+     NomeSerie := PlanilhaCP.ActiveSheet.GetText( 1, CountLav+2);
+     Serie1 := Grafico1.Series.AddLineSerie(NomeSerie, Cor);
+     vSerieDecr := PlanilhaCP.ActiveSheet.ColToVec( CountLav+2, 2, NLP );
+     for j := 1 to NLV do
+      begin
+      Serie1.AddXY(vFreq.Get(j), vSerieDecr.Get(j), '', Cor);
+      end;
+
+  // Liberar vetores
+  GlobalObjects.Remove('vIndiceSerie');
+  GlobalObjects.Remove('vSerie');
+  GlobalObjects.Remove('vSerieDecr');
+  GlobalObjects.Remove('vFreq'); 
+  GlobalObjects.Remove('vMediaVAL');
+  GlobalObjects.Remove('vSoma');
+  GlobalObjects.Remove('vAux');
+  GlobalObjects.Remove('vIAux');
+  // Salvar Planilhas
+//  PlanilhaVAL.SaveToFile('F:\Pesquisa\Orientações\FlavioVitoria\PropagarEstadaPortugal\SaidasViegas\PR_CHU.xls');
+    PlanilhaVAL.Show;
+    PlanilhaCP.Show;
+    Grafico1.Show;
+    Grafico2.Show;
+  //saida.show;
+end.
+
+
+
+

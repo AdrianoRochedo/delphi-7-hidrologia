@@ -1,0 +1,44 @@
+unit FrameBasicBtH;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls;
+
+type
+  TFrameBtBasicH = class(TFrame)
+    BtOk: TButton;
+    BtCancel: TButton;
+    BtApply: TButton;
+    procedure BtOkClick(Sender: TObject);
+    procedure BtCancelClick(Sender: TObject);
+    procedure BtApplyClick(Sender: TObject);
+  private
+    FModalResult : TModalResult;
+  public
+    property Modalresult : TModalResult read FModalResult;
+  end;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrameBtBasicH }
+
+procedure TFrameBtBasicH.BtOkClick(Sender: TObject);
+begin
+  FModalResult := mrOk;
+end;
+
+procedure TFrameBtBasicH.BtCancelClick(Sender: TObject);
+begin
+  FModalResult := mrCancel;
+end;
+
+procedure TFrameBtBasicH.BtApplyClick(Sender: TObject);
+begin
+  FModalResult := mrOk;
+end;
+
+end.

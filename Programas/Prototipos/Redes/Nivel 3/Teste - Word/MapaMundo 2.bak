@@ -1,0 +1,215 @@
+[Projeto]
+Nome=Proj_1
+
+[Dados Proj_1]
+Nome=Proj_1
+Classe=Txx_Projeto
+Bloqueado=0
+Comentarios=
+Separador Decimal=.
+Fundo=
+Dir. Saida=
+Dir. Trabalho=
+Leyers=2
+
+[Dados Proj_1 - Layer 2]
+Type=0
+Name=country.shp
+Visible=1
+Symbol.Color=14417404
+Symbol.Size=0
+Symbol.Style=0
+UseScaleForVisibility=0
+MinScale=0
+MaxScale=0
+
+[Dados Proj_1 - Layer 1]
+Type=0
+Name=cities.shp
+Visible=0
+Symbol.Color=255
+Symbol.Size=5
+Symbol.Style=1
+UseScaleForVisibility=1
+MinScale=30000
+MaxScale=0
+
+[Dados SubBacia_5]
+Nome=SubBacia_5
+Classe=Txx_SubBacia
+Bloqueado=0
+Comentarios=
+x=-167.045244900685
+y=3.67635302273732
+Coefs. de Contribuicao=1
+Coef1=1
+
+[Dados SubBacia_6]
+Nome=SubBacia_6
+Classe=Txx_SubBacia
+Bloqueado=0
+Comentarios=
+x=-129.050640178177
+y=-39.5588868339107
+Coefs. de Contribuicao=1
+Coef1=1
+
+[Dados SubBacia_1]
+Nome=SubBacia_1
+Classe=Txx_SubBacia
+Bloqueado=0
+Comentarios=
+x=-102.847464507481
+y=35.7752432193396
+Coefs. de Contribuicao=1
+Coef1=1
+
+[Dados SubBacia_2]
+Nome=SubBacia_2
+Classe=Txx_SubBacia
+Bloqueado=0
+Comentarios=
+x=-15.7219054024175
+y=3.67635302273732
+Coefs. de Contribuicao=1
+Coef1=1
+
+[Dados SubBacia_4]
+Nome=SubBacia_4
+Classe=Txx_SubBacia
+Bloqueado=0
+Comentarios=
+x=89.745876672133
+y=-5.49475846200619
+Coefs. de Contribuicao=1
+Coef1=1
+
+[Dados SubBacia_3]
+Nome=SubBacia_3
+Classe=Txx_SubBacia
+Bloqueado=0
+Comentarios=
+x=98.2619087651091
+y=62.6334982818028
+Coefs. de Contribuicao=1
+Coef1=1
+
+[Dados Der_1]
+Nome=Der_1
+Classe=Txx_Derivacao
+Bloqueado=0
+Comentarios=
+x=-15.0668260106501
+y=-36.2834898750737
+
+[PCs]
+Quantidade=5
+PC1=Res_1
+PC2=Objeto_1
+PC3=Objeto_2
+PC4=Res_2
+PC5=Objeto_3
+
+[Dados Res_1]
+Nome=Res_1
+Classe=Txx_RES
+Bloqueado=0
+Comentarios=
+x=-143.462386797059
+y=-11.3904729879127
+TD=TrechoDagua_1
+SubBacias=2
+SB1=SubBacia_5
+SB2=SubBacia_6
+Derivacoes=0
+
+[Dados TrechoDagua_1]
+Nome=TrechoDagua_1
+Classe=Txx_TrechoDagua
+Bloqueado=0
+Comentarios=
+PM=Res_1
+PJ=Objeto_1
+
+[Dados Objeto_1]
+Nome=Objeto_1
+Classe=Txx_PC
+Bloqueado=0
+Comentarios=
+x=-105.46778207455
+y=6.2966705898069
+TD=TrechoDagua_2
+SubBacias=1
+SB1=SubBacia_1
+Derivacoes=0
+
+[Dados TrechoDagua_2]
+Nome=TrechoDagua_2
+Classe=Txx_TrechoDagua
+Bloqueado=0
+Comentarios=
+PM=Objeto_1
+PJ=Objeto_2
+
+[Dados Objeto_2]
+Nome=Objeto_2
+Classe=Txx_PC
+Bloqueado=0
+Comentarios=
+x=-28.8234932377653
+y=-9.42523481261056
+TD=TrechoDagua_3
+SubBacias=1
+SB1=SubBacia_2
+Derivacoes=1
+DER1=Der_1
+
+[Dados TrechoDagua_3]
+Nome=TrechoDagua_3
+Classe=Txx_TrechoDagua
+Bloqueado=0
+Comentarios=
+PM=Objeto_2
+PJ=Res_2
+
+[Dados Res_2]
+Nome=Res_2
+Classe=Txx_RES
+Bloqueado=0
+Comentarios=
+x=66.8180979602742
+y=-18.5963462973541
+TD=TrechoDagua_4
+SubBacias=1
+SB1=SubBacia_4
+Derivacoes=0
+
+[Dados TrechoDagua_4]
+Nome=TrechoDagua_4
+Classe=Txx_TrechoDagua
+Bloqueado=0
+Comentarios=
+PM=Res_2
+PJ=Objeto_3
+
+[Dados Objeto_3]
+Nome=Objeto_3
+Classe=Txx_PC
+Bloqueado=0
+Comentarios=
+x=77.9544476203199
+y=54.1174661888266
+SubBacias=1
+SB1=SubBacia_3
+Derivacoes=0
+
+[Area de Projeto]
+Bloqueado=0
+x=2
+y=7
+Largura=584
+Altura=311
+Mostrar Fundo=1
+Mostrar Trechos=1
+Estado Janela=0
+

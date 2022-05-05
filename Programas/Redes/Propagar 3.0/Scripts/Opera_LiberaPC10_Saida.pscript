@@ -1,0 +1,34 @@
+program Opera_Libera_PC10_Saida;
+
+var 
+    //Saida    : Object; {Variável já inicializada pelo sistema}
+    //Projeto  : Object; {Variável já inicializada pelo sistema}
+
+    PC              : Object;
+    i, dt           : Integer;
+    LiberaPlaneja   : Object;
+    LiberaOpera     : Object;
+
+    //Ret1_9, Ret2_9, Ret3_9     : Real;
+    //d1_9, d2_9, d3_9, sb_9  : Real;
+    //d1_10, d2_10, d3_10, sb_10  : Real;
+
+begin
+  dt := Projeto.DeltaT;
+
+  PC    := Projeto.PCPeloNome('Queimado');   
+
+  // Criação da variável global LiberaOpera
+  if dt = 1 {and (GlobalObjects.Exists('LiberaOpera')} then
+     begin
+     LiberaOpera := wsDFVecCreate(660);
+     GlobalObjects.Add('LiberaOpera', LiberaOpera);
+     end
+  else
+     // Recupera variáveis globais
+     LiberaOpera   := TwsDFVec(GlobalObjects.Get('LiberaOpera'));
+
+  if ObjectIsValid (LiberaOpera) then            
+     LiberaOpera.Set(dt ,PC.ObtemDefluencia(dt));
+
+end.

@@ -1,0 +1,97 @@
+[Projeto]
+Nome=Proj_1
+
+[Dados Proj_1]
+Nome=Proj_1
+Classe=Txx_Projeto
+Bloqueado=0
+Comentarios=
+Separador Decimal=.
+Fundo=
+Dir. Saida=
+Dir. Trabalho=F:\Projetos\Hidrologia\Programas\Prototipos\Redes\Nivel 3\Teste - Word
+
+[Dados SubBacia_1]
+Nome=SubBacia_1
+Classe=Txx_SubBacia
+Bloqueado=0
+Comentarios=
+x=-36.6990291262136
+y=50.5358834868496
+Coefs. de Contribuicao=1
+Coef1=1
+
+[Dados Der_1]
+Nome=Der_1
+Classe=Txx_Derivacao
+Bloqueado=0
+Comentarios=
+x=-117.087378640777
+y=55.7786019334515
+
+[PCs]
+Quantidade=3
+PC1=Res_1
+PC2=Objeto_1
+PC3=Objeto_2
+
+[Dados Res_1]
+Nome=Res_1
+Classe=Txx_RES
+Bloqueado=0
+Comentarios=
+x=-141.553398058252
+y=-12.3767378723737
+TD=TrechoDagua_2
+SubBacias=0
+Derivacoes=0
+
+[Dados TrechoDagua_2]
+Nome=TrechoDagua_2
+Classe=Txx_TrechoDagua
+Bloqueado=0
+Comentarios=
+PM=Res_1
+PJ=Objeto_1
+
+[Dados Objeto_1]
+Nome=Objeto_1
+Classe=Txx_PC
+Bloqueado=0
+Comentarios=
+x=-149.417475728155
+y=34.8077281470438
+TD=TrechoDagua_1
+SubBacias=0
+Derivacoes=1
+DER1=Der_1
+
+[Dados TrechoDagua_1]
+Nome=TrechoDagua_1
+Classe=Txx_TrechoDagua
+Bloqueado=0
+Comentarios=
+PM=Objeto_1
+PJ=Objeto_2
+
+[Dados Objeto_2]
+Nome=Objeto_2
+Classe=Txx_PC
+Bloqueado=0
+Comentarios=
+x=-65.5339805825243
+y=19.9533592150049
+SubBacias=1
+SB1=SubBacia_1
+Derivacoes=0
+
+[Area de Projeto]
+Bloqueado=0
+x=0
+y=0
+Largura=420
+Altura=265
+Mostrar Fundo=1
+Mostrar Trechos=1
+Estado Janela=0
+

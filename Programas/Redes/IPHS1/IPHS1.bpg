@@ -1,0 +1,35 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = IPHS1_WIN.exe ImageScanner.exe CN.exe CN.dll CurvasIDF.exe IPHS1.br
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+IPHS1_WIN.exe: IPHS1_WIN.dpr
+  $(DCC)
+
+ImageScanner.exe: Progs\ImageScanner.dpr
+  $(DCC)
+
+CN.exe: ..\..\CN\CN.dpr
+  $(DCC)
+
+CN.dll: ..\..\CN\DLL\CN.dpr
+  $(DCC)
+
+CurvasIDF.exe: ..\..\CurvasIDF\CurvasIDF.dpr
+  $(DCC)
+
+IPHS1.br: Linguagens\BR\IPHS1.dpr
+  $(DCC)
+
+

@@ -1,0 +1,69 @@
+I - Irrigated
+R - Rainfed
+
+Variaveis com "()" no final sao funcoes.
+
+NetProfit() =
+  I) getRawMarginOfProfit() - (Crop.Cost + getIrrCost())
+
+       getRawMarginOfProfit() =
+         getCropYield() * getMPV()
+
+           getCropYield() =
+             I) getICPY() * (1 - FYieldLoss)
+             R) getRCPY() * (1 - FYieldLoss)
+
+                getICPY() = Crop.RendimentoPotDaCulturaIrrigada(ano)
+                getRCPY() = Crop.RendimentoPotDaCultura(ano)
+
+           getMPV() = Crop.ValorProdutoMercado(ano)
+
+       Crop.Cost =
+          Crop.FixedCost + Crop.VariableCost
+
+       getIrrCost() = 
+         getVIC() + getFIC()
+
+           getVIC() = {VariableIrrCost}
+             getEnergyCost() + getWaterCost() + getLaborCost() + Crop.Sys_IrrMainCost
+
+               getEnergyCost() =
+                 if Crop.Sys_PumpEffic <> 0 then
+                    result := (0.736 / 270) *
+                              ( (Crop.Sys_FlowRate * getHorasOper() * Crop.Sys_PressureHead * Crop.EnergyPrice) /
+                                ((Crop.Sys_PumpEffic / 100)) )
+                 else
+                    result := 0
+
+               getWaterCost() =
+                 getRawIrrDepth() * FManagement.Crop.WaterPrice
+
+                   getRawIrrDepth() =
+                     if Crop.Sys_Efficiency <> 0 then
+                        result := (FIrrDepth / (Crop.Sys_Efficiency / 100)) * 10
+                     else
+                        result := 0
+
+               getLaborCost() =
+                 getHorasOper() * Crop.Labor_Persons * Crop.Labor_CostHourly
+
+                   getHorasOper() =
+                     if Crop.Sys_FlowRate <> 0 then
+                        result := getRawIrrDepth() / Crop.Sys_FlowRate
+                     else
+                        result := 0
+
+           getFIC() = {FixedIrrCost}
+             (Crop.Sys_IrrInstCost - Crop.Sys_IrrResVal) * getCapRetFac()
+
+             getCapRetFac() =
+               x := Math.Power((Crop.Sys_AnualIR / 100) + 1, Crop.Sys_Life);
+               if x <> 1 then
+                  result := ((Crop.Sys_AnualIR / 100) * x) / (x - 1)
+               else
+                  result := 0
+
+
+  R) getRawMarginOfProfit() - FManagement.Crop.Cost;
+     IDEM sem getIrrCost()
+

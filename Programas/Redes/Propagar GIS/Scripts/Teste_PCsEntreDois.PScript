@@ -1,0 +1,18 @@
+ var SL: Object;
+     PC: Object;
+      i: Integer;
+ begin
+   SL := Projeto.PCsEntreDois('PC_6', 'PC_14');
+
+   if SL.Count = 0 then
+      ShowMessage('Nenhum PC foi encontrado entre estes dois')
+   else
+      for i := 0 to SL.Count-1 do
+         begin
+         ShowMessage(SL.Get(i));
+         PC := TprPCP(SL.GetObject(i));
+         ShowMessage('CRC do ' + PC.Nome + ' = ' + PC.CRC);
+         end;
+
+   FreeObject(SL);
+ end.

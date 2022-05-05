@@ -1,0 +1,74 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Importador.exe ChuvaDNAAE.dll CodeVasf_1.dll ChuvaCEEE.dll \
+  SUDENE_2_Excel.dll SUDENE_Excel.dll SUDENE_Texto.dll VzoCEEE.dll VzoDNAAE.dll \
+  Excel_Getulio.dll Aneel_CV_Num.dll Isareg_Diario.dll Isareg_Mensal.dll \
+  TextoSimples.dll Elmo.dll Excel_4_Simples.dll Excel.dll Testador.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Importador.exe: Importador.dpr
+  $(DCC)
+
+ChuvaDNAAE.dll: ..\Plugins V3\ChuvaDNAAE.dpr
+  $(DCC)
+
+CodeVasf_1.dll: ..\Plugins V3\CodeVasf_1.dpr
+  $(DCC)
+
+ChuvaCEEE.dll: ..\Plugins V3\ChuvaCEEE.dpr
+  $(DCC)
+
+SUDENE_2_Excel.dll: ..\Plugins V3\SUDENE_2_Excel.dpr
+  $(DCC)
+
+SUDENE_Excel.dll: ..\Plugins V3\SUDENE_Excel.dpr
+  $(DCC)
+
+SUDENE_Texto.dll: ..\Plugins V3\SUDENE_Texto.dpr
+  $(DCC)
+
+VzoCEEE.dll: ..\Plugins V3\VzoCEEE.dpr
+  $(DCC)
+
+VzoDNAAE.dll: ..\Plugins V3\VzoDNAAE.dpr
+  $(DCC)
+
+Excel_Getulio.dll: ..\Plugins V3\Excel_Getulio.dpr
+  $(DCC)
+
+Aneel_CV_Num.dll: ..\Plugins V3\Aneel_CV_Num.dpr
+  $(DCC)
+
+Isareg_Diario.dll: ..\Plugins V3\Isareg_Diario.dpr
+  $(DCC)
+
+Isareg_Mensal.dll: ..\Plugins V3\Isareg_Mensal.dpr
+  $(DCC)
+
+TextoSimples.dll: ..\Plugins V3\TextoSimples.dpr
+  $(DCC)
+
+Elmo.dll: ..\Plugins V3\Elmo.dpr
+  $(DCC)
+
+Excel_4_Simples.dll: ..\Plugins V3\Excel_4_Simples.dpr
+  $(DCC)
+
+Excel.dll: ..\Plugins V3\Excel.dpr
+  $(DCC)
+
+Testador.exe: ..\Plugins V3\Testes\Testador.dpr
+  $(DCC)
+
+

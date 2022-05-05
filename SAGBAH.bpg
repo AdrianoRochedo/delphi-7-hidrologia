@@ -1,0 +1,30 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Cascata.exe chuvaz.exe Modhacw.exe Propagar.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+
+Cascata.exe: Programas\Cascata\Cascata.dpr
+  $(DCC)
+
+chuvaz.exe: Programas\Chuvas\chuvaz.dpr
+  $(DCC)
+
+Modhacw.exe: Programas\Modhac\Modhacw.dpr
+  $(DCC)
+
+Propagar.exe: Programas\Redes\Propagar\Propagar.dpr
+  $(DCC)
+
+

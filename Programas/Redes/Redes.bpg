@@ -1,0 +1,32 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = IPHS1_WIN.exe Propagar.exe iphs1_teste.exe ImageScanner.exe Copy of IPHS1_WIN.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+IPHS1_WIN.exe: IPHS1\IPHS1_WIN.dpr
+  $(DCC)
+
+Propagar.exe: Propagar\Propagar.dpr
+  $(DCC)
+
+iphs1_teste.exe: Testes\iphs1_teste.dpr
+  $(DCC)
+
+ImageScanner.exe: IPHS1\Progs\ImageScanner.dpr
+  $(DCC)
+
+Copy of IPHS1_WIN.exe: IPHS1\Copy of IPHS1_WIN.dpr
+  $(DCC)
+
+

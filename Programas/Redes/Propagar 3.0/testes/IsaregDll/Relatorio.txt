@@ -1,0 +1,104 @@
+Relatorio de uso da DLL do Isareg
+
+  Consegui rodar (correr) a DLL mas nao seguindo exatamente suas especificacoes.
+
+  1- A DLL eh chamada com dois parametros, um caminho e um Flag de erro.
+     Soh que estes dois parametros, nesta versao, sao simplesmente ignorados !!!
+
+  2- Para conseguir rodar com um conjunto qualquer de dados tive que gerar um "Batch.reg"
+     na pasta do executavel que utiliza a DLL pois a DLL procura somente nesta pasta, mesmo
+     voce passando o caminho por parametro ou escrevendo no "Batch.reg".
+
+  3- Tive que colocar o caminho em cada arquivo referenciado no "Batch.reg"
+
+  4- A primeira linha do "Batch.reg" continua sendo em branco.
+
+  5- Notei tambem que os nomes das pastas podem possuir mais do que 8 caracteres, mas
+     nao podem possuir espaco em branco entre as letras, pois a DLL os remove.
+     Ex: c:\123 4\xx  vira  c:\1234\xx
+     Estraaaanho !!!
+
+  6- Os arquivos .IRR .SAI .DBU .DHU .FAS  saem na pasta dos arquivos de entrada.
+     mas os arquivos NEWFILE.ET0  e  NEWFILE.Pre  saem na pasta onde esta o executavel
+     chamador.
+
+Ai vai um exemplo de um Batch.reg que simula direitinho...
+
+linha 01: 
+linha 02: c:\123456789\cul
+linha 03: c:\123456789\sol
+linha 04: c:\123456789\eto
+linha 05: c:\123456789\pre
+linha 06: c:\123456789\sai
+linha 07: 1990
+linha 08: c:\123456789\Man
+linha 09: c:\123456789\Res
+linha 10: N
+
+Note a presenca dos caminhos de cada arquivo.
+
+Sugestoes:
+
+  1- Realmente utilizar o parametro de caminho ou elimina-lo, colocando assim o caminho 
+     junto com os arquivos referenciados no Batch.reg
+
+  2- Gerar o Batch.reg na pasta dos arquivos de entrada
+
+  3- Criar todos os arquivos gerados pelo processo de simulacao na pasta dos arquivos de 
+     entrada ou fornecer o nome completo (pasta + nome) dos arquivos de saida.
+
+  4- Nao eliminar os espacos em branco das pastas.
+
+  5- Ao compilar a DLL inserir a versao. Os compiladores mais novos do Fortran
+     devem possuir em algum lugar um dialogo para isto.
+     Ex: versao 1.0.0.35
+
+Ai vai o exemplo de programa em Delphi (pascal) que utilizei lara testar a chamada.
+
+-----------------------------------------------------------------------------------
+
+program TestaIsaregDLL;
+
+{$APPTYPE CONSOLE}
+
+uses
+  Windows,
+  Dialogs;
+
+    type
+      TS164 = string[164];
+      TS1   = string[1];
+
+      TProc = procedure(Path: TS164;
+                        var Flag: TS1); stdcall;
+
+    var
+      sIsaregDLL: pChar = 'isareg.dll';
+      s1: TS164 = 'c:\123456789';
+      s2: TS1 = '0';
+
+    procedure ExecutarIsareg();
+    var ExecIsareg: TProc;
+        h: THandle;
+    begin
+      h := Windows.LoadLibrary(sIsaregDLL);
+      if h <> 0 then
+         try
+         @ExecIsareg := Windows.GetProcAddress(h, 'isareg');
+         if @ExecIsareg <> nil then
+           begin
+           ExecIsareg(s1, s2);
+           Dialogs.ShowMessage(s2);
+           end
+         else
+            Dialogs.ShowMessage('Ponto de entrada da "Isareg.dll" não encontrado.')
+         finally
+            Windows.FreeLibrary(h);
+         end
+      else
+         Dialogs.ShowMessage('"Isareg.dll" não encontrada.');
+    end;
+
+begin
+  ExecutarIsareg();
+end.

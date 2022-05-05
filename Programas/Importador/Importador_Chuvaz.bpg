@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Importador.exe CodeVasf_1.dll SUDENE_Excel.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Importador.exe: V1\Importador.dpr
+  $(DCC)
+
+Importador.exe: V2\Importador.dpr
+  $(DCC)
+
+SUDENE_Excel.dll: Plugins\SUDENE_Excel.dpr
+  $(DCC)
+
+CodeVasf_1.dll: Plugins\CodeVasf_1.dpr
+  $(DCC)
+
+

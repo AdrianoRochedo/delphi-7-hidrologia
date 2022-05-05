@@ -1,0 +1,5 @@
+Tanto a DLL (Excel) quanto os programas dependentes deverao
+utilizar as mesmas diretivas de compilacao.
+Ex: WinStat.
+Tambem deverao utilizar a biblioteca da borland para
+gerenciamento de memoria "ShareMem" --> borlandmm.dll

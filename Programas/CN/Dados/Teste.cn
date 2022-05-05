@@ -1,0 +1,16 @@
+[SubDiv 1]
+CN=79
+Perc=10
+Sup=0
+TB=1
+TS=1
+US=1
+
+[SubDiv 2]
+CN=75
+Perc=90
+Sup=1
+TB=0
+TS=2
+US=4
+

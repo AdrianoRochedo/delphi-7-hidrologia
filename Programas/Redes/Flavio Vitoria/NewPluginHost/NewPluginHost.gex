@@ -1,0 +1,20 @@
+[General]
+Name=NewPluginHost
+Project=1
+[Classes]
+Count=15
+Class0="TScenariosApplication","TApplication","Scenarios.Application","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Scenarios.Application.pas"
+Class1="TfoMain","TForm, IIDE","Scenarios.Form.Main","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Dialogs\Scenarios.Form.Main.pas"
+Class2="TGlobalMessagesForm","TForm","Scenarios.Form.GlobalMessages","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Dialogs\Scenarios.Form.GlobalMessages.pas"
+Class3="TPluginList","","Scenarios.Plugins","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Scenarios.Plugins.pas"
+Class4="TComponent","T_NRC_InterfacedObject, IMessageReceptor","Rochedo.Component","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Rochedo.Component.pas"
+Class5="TSolidComponent","TComponent","Rochedo.Component","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Rochedo.Component.pas"
+Class6="TSquare","TSolidComponent","Rochedo.Component","259","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Rochedo.Component.pas"
+Class7="TEllipse","TSolidComponent","Rochedo.Component","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Rochedo.Component.pas"
+Class8="TTriangle","TSolidComponent","Rochedo.Component","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Rochedo.Component.pas"
+Class9="ComponentClasses","","Rochedo.Component","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Rochedo.Component.pas"
+Class10="TComponentDialog","TForm","Rochedo.Component.Dialog","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Dialogs\Rochedo.Component.Dialog.pas"
+Class11="TDesigner","TForm, IDesigner","Rochedo.Designer","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Rochedo.Designer.pas"
+Class12="TScenariosDesigner","TZoomPanelDesigner","Scenarios.Designer","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Scenarios.Designer.pas"
+Class13="TPC","TSquare","Scenarios.Components","6","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Scenarios.Components.pas"
+Class14="TZoomPanelDesigner","TDesigner","Rochedo.Designer.ZoomPanel","0","F:\Projetos\Hidrologia\Programas\Redes\Flavio Vitoria\NewPluginHost\Source\Units\Rochedo.Designer.ZoomPanel.pas"

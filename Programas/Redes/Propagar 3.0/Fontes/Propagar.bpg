@@ -1,0 +1,30 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Propagar_3.exe SaoMiguel_Jequia.exe cd_Lavouras.dll \
+  MPSGenerator.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Propagar_3.exe: Propagar_3.dpr
+  $(DCC)
+
+SaoMiguel_Jequia.exe: SaoMiguel_Jequia.dpr
+  $(DCC)
+
+cd_Lavouras.dll: Plugins\Cenarios de Demanda\Lavouras\cd_Lavouras.dpr
+  $(DCC)
+
+MPSGenerator.exe: ..\testes\MPSGenerator\MPSGenerator.dpr
+  $(DCC)
+
+

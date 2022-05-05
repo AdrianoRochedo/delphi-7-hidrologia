@@ -1,0 +1,10 @@
+NomesCurtos
+Orpheus
+D5
+D3
+IPHS1
+Chuvaz
+Excel         - Permite o uso classes Planilhas
+MSXML         - Permite que certos mecanismos utilizem a versao da XML da Microsoft
+DEMO          - Especifica uma versao de demonstracao
+                Devera ser desabilitada para a versao comercial

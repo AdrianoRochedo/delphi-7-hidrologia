@@ -1,0 +1,63 @@
+program Planeja_LiberaDemandas_PC10_Global;
+
+var Saida    : Object; {Variável já inicializada pelo sistema}
+    Projeto  : Object; {Variável já inicializada pelo sistema}
+
+    PC, PC_9, PC_10 : Object;
+    i, dt           : Integer;
+    Libera          : Object;
+    
+
+    Ret1_9, Ret2_9, Ret3_9     : Real;
+    d1_9, d2_9, d3_9, sb_9  : Real;
+    d1_10, d2_10, d3_10, sb_10  : Real;
+
+begin
+  dt := Projeto.DeltaT;
+
+  PC    := Projeto.PCPeloNome('Queimado'); 
+  PC_10 := Projeto.PCPeloNome('PC_10');
+  PC_9  := Projeto.PCPeloNome('PC_9');
+  
+  Saida.Write('PC .... : ' + PC.Nome);
+  Saida.Write('DeltaT ... :' + ValToStr(dt));
+
+  Ret1_9 := PC_9.FatorDeRetorno(1);       
+  Ret2_9 := PC_9.FatorDeRetorno(2);       
+  Ret3_9 := PC_9.FatorDeRetorno(3);
+
+  Saida.Write('Ret1_9 ... :' + ValToStr(Ret1_9));
+  Saida.Write('Ret2_9 ... :' + ValToStr(Ret2_9));
+  Saida.Write('Ret3_9 ... :' + ValToStr(Ret3_9));
+  
+  d1_9 := PC_9.ObtemValorDemanda(dt, 1, 'T');       
+  d2_9 := PC_9.ObtemValorDemanda(dt, 2, 'T');       
+  d3_9 := PC_9.ObtemValorDemanda(dt, 3, 'T');       
+  sb_9 := PC_9.ObtemVazaoAfluenteSBs;
+
+  Saida.Write('d1_9 ... :' + ValToStr(d1_9));
+  Saida.Write('d2_9 ... :' + ValToStr(d2_9));
+  Saida.Write('d3_9 ... :' + ValToStr(d3_9));
+  Saida.Write('sb_9 ... :' + ValToStr(sb_9));
+
+  
+  
+  d1_10 := PC_10.ObtemValorDemanda(dt, 1, 'T');       
+  d2_10 := PC_10.ObtemValorDemanda(dt, 2, 'T');       
+  d3_10 := PC_10.ObtemValorDemanda(dt, 3, 'T');       
+  sb_10 := PC_10.ObtemVazaoAfluenteSBs;
+
+  Saida.Write('d1_10 ... :' + ValToStr(d1_10));
+  Saida.Write('d2_10 ... :' + ValToStr(d2_10));
+  Saida.Write('d3_10 ... :' + ValToStr(d3_10));
+  Saida.Write('sb_10 ... :' + ValToStr(sb_10));
+
+  Libera := (1- Ret1_9)* d1_9 + (1- Ret2_9)* d2_9 + (1- Ret3_9)* d3_9
+             - sb_9 + d1_10 + d2_10 + d3_10 - sb_10;
+  if Libera < 0 then Libera := 0;
+
+  PC.AtribuiDefluencia(dt, Libera);
+  
+  Saida.Write('Libera ... :' + ValToStr(Libera));
+  Saida.Show;
+end.

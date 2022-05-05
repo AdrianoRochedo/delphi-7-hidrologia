@@ -1,0 +1,2 @@
+inherited smApplication: TsmApplication
+end

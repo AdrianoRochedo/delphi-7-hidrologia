@@ -1,0 +1,32 @@
+TO-DO
+
+   GIS:
+
+   - Transformar a propriedade "Pos: TPoint" para "Pos: ImoPoint";
+
+   - Janela Principal
+
+            - Criar o botão "Selecionar"
+
+   - No Projeto:
+
+            function AddLayer(const FileName: String): IDispatch;
+            function moPointToPoint(p: ImoPoint): TPoint;
+            function PointTo_moPoint(p: TPoint): ImoPoint;
+
+   - Area de Projeto
+
+           - Criar uma StatusBar
+
+           - Mudar os eventos da area de projeto para o mapa
+
+                    Map_Click
+                    Map_Dbl_Click
+                    Map_MouseDown
+                    Map_MouseMove
+                    Map_MouseUp
+
+            - Criar os ventos
+
+                    Map_AfterLayerDraw
+                    Map_BeforeLayerDraw

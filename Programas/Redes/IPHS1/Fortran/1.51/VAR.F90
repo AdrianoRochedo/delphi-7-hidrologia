@@ -1,0 +1,6 @@
+MODULE VAR
+IMPLICIT NONE
+SAVE
+
+character(80) ca
+END MODULE
